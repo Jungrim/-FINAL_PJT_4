@@ -3,10 +3,14 @@
 <html lang="en">
 <head>
 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+
+
     <style>
         .flex-container{
         display: flex;
@@ -144,7 +148,10 @@
         top : 215px;
         left: -185px;
         }
-
+        .click {
+          background-color: black;
+          color : white;
+        }
 
 
     </style>
@@ -155,14 +162,31 @@
 
         <div class="gender">성별</div>
         <div class="age">연령</div>
-        <div class="frame">
-            <button type ='button' class="custom-btn btn-1" data-test="value">남성</button>
-            <button type ='button' class="custom-btn btn-2">여성</button>
-            <button type ='button' class="custom-btn btn-3">10대</button>
-            <button type ='button' class="custom-btn btn-4">20대</button>
-            <button type ='button' class="custom-btn btn-5">30대</button>
-            <button type ='button' class="custom-btn btn-6">40대이상</button>
+        <div class="frame" onclick="test()">
+            <button type ='button'  class="custom-btn btn-1" value="male">남성</button>
+            <button type ='button'  class="custom-btn btn-2" value="female">여성</button>
+            <button type ='button'  class="custom-btn btn-3" value="10">10대</button>
+            <button type ='button'  class="custom-btn btn-4" value="20">20대</button>
+            <button type ='button'  class="custom-btn btn-5" value="30">30대</button>
+            <button type ='button'  class="custom-btn btn-6" value="40">40대이상</button>
+
         </div>
+        <script language="javascript">
+        const nonClick = document.querySelectorAll(".custom-btn");
+
+        function handleClick(event) {
+          // div에서 모든 "click" 클래스 제거
+          nonClick.forEach((e) => {
+            e.classList.remove("click");
+          });
+          // 클릭한 div만 "click"클래스 추가
+          event.target.classList.add("click");
+        }
+
+        nonClick.forEach((e) => {
+          e.addEventListener("click", handleClick);
+        });
+        </script>
     </div>
 
 </body>
