@@ -7,95 +7,37 @@
       <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
 </head>
+<style>
+
+.w-btn {
+    border: none;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+       background-color: #14213d;
+    color: #fefae0;
+    font-size:30px;
+
+}
+</style>
+
 <body>
-
-<h1>이사가고 싶은 동네 찾기 Step 1</h1>
-<div>
-    <form action="./trendSelect" method="POST">{% csrf_token %}
-        <div style="height:10%"></div>
-
-    <div style="height: 10%">
-        <div class="rate"><a>교통</a>
-        <input type="radio" id="star5_1" name="rate_1" value="5"/>
-        <label for="star5_1" title="text">5 stars</label>
-        <input type="radio" id="star4_1" name="rate_1" value="4"/>
-        <label for="star4_1" title="text">4 stars</label>
-        <input type="radio" id="star3_1" name="rate_1" value="3"/>
-        <label for="star3_1" title="text">3 stars</label>
-        <input type="radio" id="star2_1" name="rate_1" value="2"/>
-        <label for="star2_1" title="text">2 stars</label>
-        <input type="radio" id="star1_1" name="rate_1" value="1"/>
-        <label for="star1_1" title="text">1 star</label>
-        </div>
+<div style="width:100%; text-align:center; ">
+    <div style=" text-align : center; margin:5px;font-size:30px;    ">
+        <img src="../static/img/logo2.png" width="220px" height="100px">
     </div>
-
-
-    <div style=" height: 10%">
-        <div class="rate"><a>방범</a>
-        <input type="radio" id="star5_2" name="rate_2" value="5"/>
-        <label for="star5_2" title="text">5 stars</label>
-        <input type="radio" id="star4_2" name="rate_2" value="4"/>
-        <label for="star4_2" title="text">4 stars</label>
-        <input type="radio" id="star3_2" name="rate_2" value="3"/>
-        <label for="star3_2" title="text">3 stars</label>
-        <input type="radio" id="star2_2" name="rate_2" value="2"/>
-        <label for="star2_2" title="text">2 stars</label>
-        <input type="radio" id="star1_2" name="rate_2" value="1"/>
-        <label for="star1_2" title="text">1 star</label>
-        </div>
+    <div style="padding:5%; display:inline-block;">
+        <a>마음에 쏙 드는 동네 찾기!</a>
     </div>
-
-    <div style="height: 10%">
-        <div class="rate"><a>환경</a>
-        <input type="radio" id="star5_3" name="rate_3" value="5"/>
-        <label for="star5_3" title="text">5 stars</label>
-        <input type="radio" id="star4_3" name="rate_3" value="4"/>
-        <label for="star4_3" title="text">4 stars</label>
-        <input type="radio" id="star3_3" name="rate_3" value="3"/>
-        <label for="star3_3" title="text">3 stars</label>
-        <input type="radio" id="star2_3" name="rate_3" value="2"/>
-        <label for="star2_3" title="text">2 stars</label>
-        <input type="radio" id="star1_3" name="rate_3" value="1"/>
-        <label for="star1_3" title="text">1 star</label>
-        </div>
+     <form action="./basicSelect" method="POST">{% csrf_token %}
+    <div style="display:block">
+        <button type="submit" class="w-btn" style="width:200px; height:100px">START</button>
     </div>
-
-        <div style="height: 10%">
-        <div class="rate"><a>편의</a>
-        <input type="radio" id="star5_4" name="rate_4" value="5"/>
-        <label for="star5_4" title="text">5 stars</label>
-        <input type="radio" id="star4_4" name="rate_4" value="4"/>
-        <label for="star4_4" title="text">4 stars</label>
-        <input type="radio" id="star3_4" name="rate_4" value="3"/>
-        <label for="star3_4" title="text">3 stars</label>
-        <input type="radio" id="star2_4" name="rate_4" value="2"/>
-        <label for="star2_4" title="text">2 stars</label>
-        <input type="radio" id="star1_4" name="rate_4" value="1"/>
-        <label for="star1_4" title="text">1 star</label>
-        </div>
-    </div>
-
-        <div style="height: 10%">
-        <div class="rate"><a>건강</a>
-        <input type="radio" id="star5_5" name="rate_5" value="5"/>
-        <label for="star5_5" title="text">5 stars</label>
-        <input type="radio" id="star4_5" name="rate_5" value="4"/>
-        <label for="star4_5" title="text">4 stars</label>
-        <input type="radio" id="star3_5" name="rate_5" value="3"/>
-        <label for="star3_5" title="text">3 stars</label>
-        <input type="radio" id="star2_5" name="rate_5" value="2"/>
-        <label for="star2_5" title="text">2 stars</label>
-        <input type="radio" id="star1_5" name="rate_5" value="1"/>
-        <label for="star1_5" title="text">1 star</label>
-        </div>
-    </div>
-
-        <button style="width:200px; height:100px" type="submit" class="btn btn-primary">다음</button>
-    </form>
+     </form>
 
 
 </div>
-
 
 </body>
 </html>
