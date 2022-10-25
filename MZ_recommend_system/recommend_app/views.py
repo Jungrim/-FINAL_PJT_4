@@ -6,6 +6,8 @@ from django.http import HttpResponse
 def index(request):
     return render(request, 'recommend_app/index.html')
 
+def basicSelect(request):
+    return render(request, 'recommend_app/basicSelect.html')
 
 def trendSelect(request):
     rating_traffic = request.POST['rate_1']
