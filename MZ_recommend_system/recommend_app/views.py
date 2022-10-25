@@ -9,6 +9,9 @@ def index(request):
 def basicSelect(request):
     return render(request, 'recommend_app/basicSelect.html')
 
+def resultShow(request):
+    return render(request, 'recommend_app/result.html')
+
 def trendSelect(request):
     rating_traffic = request.POST['rate_1']
     rating_safety = request.POST['rate_2']
@@ -17,3 +20,6 @@ def trendSelect(request):
     rating_health = request.POST['rate_5']
     print(rating_traffic,rating_safety ,rating_environment, rating_facility, rating_health)
     return render(request, 'recommend_app/trendSelect.html')
+
+def statSelect(request):
+    return render(request, 'recommend_app/age_gender_statistics.html')
