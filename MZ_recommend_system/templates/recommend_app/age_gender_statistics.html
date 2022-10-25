@@ -150,6 +150,9 @@
     </style>
 </head>
 <body>
+    <div style=" text-align : center; margin:5px;font-size:30px;    ">
+        <img src="../static/img/logo2.png" width="220px" height="100px">
+    </div>
     <div class="flex-container">
         <div class="ques1">당신은 어떤 사람인가요?</div>
 
@@ -163,7 +166,12 @@
             <button type ='button' class="custom-btn btn-5">30대</button>
             <button type ='button' class="custom-btn btn-6">40대이상</button>
         </div>
+
+
     </div>
+<form action="./resultShow" method="POST">{% csrf_token %}
+        <button style="width:150px; height:50px" type="submit" class="w-btn" >결과보기</button>
+    </form>
 
 </body>
 </html>
