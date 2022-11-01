@@ -1,0 +1,71 @@
+{%load static%}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>동네어때</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    .w-btn {
+    border: none;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+       background-color: #14213d;
+    color: #fefae0;
+    font-size:30px;
+
+}
+</style>
+
+<body>
+<form action="./protoSubmit" method="POST">{% csrf_token %}
+    <div style=" text-align : center; margin:5px;font-size:30px;">
+        <img src="../static/img/logo2.png" width="220px" height="100px">
+    </div>
+    <label>교통</label>
+    <input name="t" type="text">
+        <label>안전</label>
+    <input name="sa" type="text" >
+        <label>공원</label>
+    <input name="p" type="text" disabled>
+        <label>편의</label>
+    <input name="c" type="text">
+        <label>의료</label>
+    <input name="me" type="text">
+       <label>교육</label>
+    <input name="st" type="text">
+       <label>육아</label>
+    <input name="baby" type="text">
+       <label>스세권</label>
+    <input name="star" type="text">
+       <label>체육시설</label>
+    <input name="ex" type="text">
+       <label>소음</label>
+    <input name="sound" type="text">
+       <label>맥세권</label>
+    <input name="mac" type="text">
+       <label>레저시설</label>
+    <input name="le" type="text">
+       <label>헬스</label>
+    <input name="he" type="text">
+       <label>골프</label>
+    <input name="gol" type="text">
+       <label>카쉐어링</label>
+    <input name="car" type="text">
+           <label>반려동물</label>
+    <input name="dog" type="text">
+
+
+
+
+
+<button id='nextbtn' style="width:150px; height:50px" type="submit" class="w-btn" >NEXT</button>
+
+
+    </form>
+</body>
+</html>
