@@ -1,0 +1,2 @@
+WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY="C:\Users\HYUNJIN\Desktop\front\FINAL_PJT_4\instantclient_21_7\network\admin")))
+SSL_SERVER_DN_MATCH=yes
