@@ -5,6 +5,6 @@ urlpatterns = [
     path('', views.index),
     path('basicSelect', views.basicSelect),
     path('protoSubmit',views.protoSubmit),
-
+    path('categoryRanking',views.categoryRanking),
 
 ]
