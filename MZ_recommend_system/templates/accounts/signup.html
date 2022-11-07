@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+</head>
+
+<body class="d-flex flex-row justify-content-center" style="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <form class="form-horizontal" action="#" method="GET">
+          <fieldset>
+            <div id="legend">
+              <legend class="">Register</legend>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="username">Username</label>
+              <div class="controls">
+                <input type="text" id="username" name="username" placeholder="" class="form-control input-lg">
+                <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="email">Age</label>
+              <div class="controls">
+                <div class="btn-group" style="">
+                  <button class="btn btn-primary dropdown-toggle" id="age" data-toggle="dropdown" type="button">연령대</button>
+                  <div class="dropdown-menu" id="ageList" style="display: none;">
+                    <a class="dropdown-item age-list" href="#" data-age="b20">20 ~ 24 세</a>
+                    <div class="dropdown-divider age-list"></div>
+                    <a class="dropdown-item age-list" href="#" data-age="a20">25 ~ 29 세</a>
+                    <div class="dropdown-divider age-list"></div>
+                    <a class="dropdown-item age-list" href="#" data-age="b30">30 ~ 34 세</a>
+                    <div class="dropdown-divider age-list"></div>
+                    <a class="dropdown-item age-list" href="#" data-age="a30">35 ~ 39 세<br></a>
+                  </div>
+                </div>
+                <p class="help-block">Please provide your E-mail</p>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="email">Gender</label><br>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary" style="">
+                  <input type="radio" name="options" id="option2"> male </label>
+                <label class="btn btn-secondary" style="">
+                  <input type="radio" name="options" id="option3"> female </label>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="password">Password</label>
+              <div class="controls">
+                <input type="password" id="password" name="password" placeholder="" class="form-control input-lg">
+                <p class="help-block">Password should be at least 6 characters</p>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="password_confirm">Password (Confirm)</label>
+              <div class="controls">
+                <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="form-control input-lg">
+                <p class="help-block">Please confirm password</p>
+              </div>
+            </div>
+            <div class="control-group">
+              <!-- Button -->
+              <div class="controls">
+                <button class="btn btn-success px-3">Register</button>
+              </div>
+            </div>
+          </fieldset>
+          <input type="hidden" name="ageParam" id="ageParam" value="a30">
+        </form>
+      </div>
+      <div class="col-md-6 d-flex flex-row justify-content-center"><img class="img-fluid d-block justify-content-center flex-row d-flex" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
+    </div>
+  </div>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+  <script>
+    document.querySelector('#age').addEventListener('click', e => {
+      document.querySelector('#ageList').style.display = 'block';
+    })
+    document.querySelectorAll('.age-list').forEach(e => {
+      e.addEventListener('click', e => {
+        console.dir(e.target)
+        document.querySelector('#ageParam').value = e.target.dataset.age;
+        document.querySelector('#ageList').style.display = 'none';
+      })
+    })
+  </script>
+</body>
+
+</html>
