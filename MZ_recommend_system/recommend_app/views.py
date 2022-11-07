@@ -12,7 +12,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import warnings
 import os
 
-from accounts.models import myuser
+from recommend_app.models import DongCnt
 
 
 # from ML_modeling import recommend_ML
@@ -52,5 +52,5 @@ def protoSubmit(request):
     return render(request, 'recommend_app/prototype2.html', content)
 
 def categoryRanking(request):
-    fin_nums = myuser.objects
-    return render(request, 'recommend_app/category_ranking.html', {'fin_nums': fin_nums})
+    dong_cnt = DongCnt.objects
+    return render(request, 'recommend_app/category_ranking.html', {'dong_cnt': dong_cnt})

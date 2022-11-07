@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
 </head>
+
 <body>
-    {% for fin_nums in fin_nums.all%}
-    <h1>{{fin_nums.password}}</h1>
-    <h1>{{fin_nums.age}}</h1>
-    <h1>{{fin_nums.gender}}</h1>
-    {%endfor%}
+  <a href="" class="nav-link" data-toggle="pill" data-target="#tabtwo">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </a>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container d-flex justify-content-center"> <a class="navbar-brand" href="#">
+        <b>카테고리 랭킹</b>
+      </a> </div>
+  </nav>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="nav nav-pills">
+            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">교통</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">치안</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabthree">조용한 동네</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">실내레저시설</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">헬스장</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">골프장</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">공원</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">편의시설</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">스타벅스</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">맥도날드</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">채식</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">코리빙</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">교육</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">키즈카페</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">동물병원</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">안심택배</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">나눔카</a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-3 col-md-4" style="">
+          <ul class="nav nav-pills flex-column">
+            {% for dong_cnt in dong_cnt.all%}
+            <h1>{{dong_cnt.dong}}</h1>
+            <h1>{{dong_cnt.car_shr_num}}</h1>
+            {%endfor%}
+            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">1위</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">2위</a> </li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">3위</a> </li>
+          </ul>
+        </div>
+        <div class="col-9 col-md-4" style="">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="tabone" role="tabpanel">
+              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+            </div>
+            <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+            </div>
+            <div class="tab-pane fade" id="tabthree" role="tabpanel">
+              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
