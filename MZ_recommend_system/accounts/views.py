@@ -16,8 +16,7 @@ def signup(request):
             # 로그인 진행
             user = authenticate(username=user_name, password=raw_password)
             login(request, user)
-            return redirect('index')
+            return redirect('/')
     else:
         form = UserForm()
     return render(request, 'accounts/signup.html', {'form':form})
-

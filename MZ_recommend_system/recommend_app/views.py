@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
@@ -12,6 +11,8 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
 import warnings
 import os
+
+from accounts.models import myuser
 
 
 # from ML_modeling import recommend_ML
@@ -50,4 +51,6 @@ def protoSubmit(request):
     content = {"content" : "test"}
     return render(request, 'recommend_app/prototype2.html', content)
 
-
+def categoryRanking(request):
+    fin_nums = myuser.objects
+    return render(request, 'recommend_app/category_ranking.html', {'fin_nums': fin_nums})
