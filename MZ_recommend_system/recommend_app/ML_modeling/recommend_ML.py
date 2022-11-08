@@ -156,7 +156,7 @@ def create_category(df):
 
     second_category = []
     for column in df.columns[6:]:
-        cate = [df[column].min(), df[column].mean()]
+        cate = [df[column].quantile(0.25), df[column].quantile(0.75)]
         second_category.append(cate)
 
     return first_category, second_category
