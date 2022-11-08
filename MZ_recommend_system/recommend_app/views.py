@@ -14,8 +14,21 @@ import os
 
 from accounts.models import myuser
 
+import sys
+# sys.path.append("C:/workspaces/FINAL_PJT_4_DS&DE/MZ_recommend_system/recommend_app/ML_modeling")
 
-# from ML_modeling import recommend_ML
+import recommend_app.ML_modeling.recommend_ML as RML
+df = RML.preprocessing_df()
+
+basic_df, first_kmeans, first_pca = RML.first_clustering(df)
+first_category, second_category = RML.create_category(df)
+user = [5,1,2,3,4,3,0,0,0,0,0,1,0,0,0,0,0,1,1,1]
+user_df,select = RML.user_scaling(first_category, second_category, user,df)
+weighted_user_df = RML.weighting(user_df, df, select, 'user')
+user_scaled = [weighted_user_df.loc['user'].values]
+user_group, user_include_df = RML.user_clustering(basic_df, df , user_scaled, first_pca, first_kmeans)
+result_dong_list = RML.similarity(user_df, df.loc[user_include_df.index.values], "user",3)
+print(user_include_df.loc[result_dong_list]['DONG'].values)
 
 def index(request):
     return render(request, 'recommend_app/index.html')
