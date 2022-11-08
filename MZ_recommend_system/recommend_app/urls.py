@@ -8,5 +8,4 @@ urlpatterns = [
     path('basicSelect', views.basicSelect, name='basicSelect'),
     path('protoSubmit',views.protoSubmit),
     path('categoryRanking',views.categoryRanking, name='categoryRanking'),
-
 ]

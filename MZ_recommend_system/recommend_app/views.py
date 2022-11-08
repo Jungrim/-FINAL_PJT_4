@@ -34,7 +34,22 @@ def index(request):
     return render(request, 'recommend_app/index.html')
 
 def basicSelect(request):
-    return render(request, 'recommend_app/basicSelect.html')
+    # if request.method == 'POST':
+    #     form = UserForm(request.POST)
+    #     if form.is_valid():
+    #         # 넘어온 데이터 db에 저장
+    #         form.save()
+    #         # user_name, password1을 추출 해서
+    #         user_name = form.cleaned_data.get('username')
+    #         raw_password = form.cleaned_data.get('password1')
+    #         # 로그인 진행
+    #         user = authenticate(username=user_name, password=raw_password)
+    #         login(request, user)
+    #         return redirect('/')
+    # else:
+    #     form = UserForm()
+    # return render(request, 'recommend_app/recommendation.html', {'form':form})
+    return render(request, 'recommend_app/recommendation.html')
 
 def protoSubmit(request):
     # print(request)
@@ -71,10 +86,10 @@ def categoryRanking(request):
     for cate in cate_list:
         cnt_list = []
         dong_list = []
-        dong_cnt = DongCnt.objects.values_list(cate, flat=True).order_by('-' + cate).all()
+        dong_cnt = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list(cate, flat=True).order_by('-' + cate).all()
         for i in range(0, 3):
             cnt_list.append(dong_cnt[i])
-        dong = DongCnt.objects.values_list('dong', flat=True).order_by('-' + cate).all()
+        dong = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list('dong', flat=True).order_by('-' + cate).all()
         for i in range(0, 3):
             dong_list.append(dong[i])
         dictionary = {'category':cate, 'dong':dong_list, 'cnt':cnt_list}
