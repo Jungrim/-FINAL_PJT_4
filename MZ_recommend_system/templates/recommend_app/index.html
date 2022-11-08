@@ -32,7 +32,7 @@
             <a class="nav-link" href="#menu"><b class="w-100 h-100">비슷한 동네 찾기</b></a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#venue"><b>카테고리별 순위</b></a>
+            <a class="nav-link" href="{% url 'recommend_app:categoryRanking' %}"><b>카테고리별 순위</b></a>
           </li>
         </ul> 
         {% if user.is_authenticated %} 
