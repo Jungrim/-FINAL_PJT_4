@@ -36,10 +36,11 @@ class CateWeights(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'cate_weights'
+        db_table = 'CATE_WEIGHTS'
+
 
 class DongCnt(models.Model):
-    dong_code = models.BigIntegerField(primary_key=True)
+    dong_code = models.BigIntegerField()
     dong = models.CharField(max_length=30, blank=True, null=True)
     gu = models.CharField(max_length=30, blank=True, null=True)
     car_shr_num = models.FloatField(blank=True, null=True)
@@ -62,7 +63,9 @@ class DongCnt(models.Model):
     safety = models.FloatField(blank=True, null=True)
     medical = models.FloatField(blank=True, null=True)
     facilities = models.FloatField(blank=True, null=True)
+    std_day = models.CharField(primary_key=True, max_length=30)
 
     class Meta:
         managed = False
-        db_table = 'dong_cnt'
+        db_table = 'DONG_CNT'
+        unique_together = (('std_day', 'dong_code'),)

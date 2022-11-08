@@ -14,8 +14,21 @@ import os
 
 from recommend_app.models import DongCnt
 
+import sys
+# sys.path.append("C:/workspaces/FINAL_PJT_4_DS&DE/MZ_recommend_system/recommend_app/ML_modeling")
 
-# from ML_modeling import recommend_ML
+import recommend_app.ML_modeling.recommend_ML as RML
+df = RML.preprocessing_df()
+
+basic_df, first_kmeans, first_pca = RML.first_clustering(df)
+first_category, second_category = RML.create_category(df)
+user = [5,1,2,3,4,3,0,0,0,0,0,1,0,0,0,0,0,1,1,1]
+user_df,select = RML.user_scaling(first_category, second_category, user,df)
+weighted_user_df = RML.weighting(user_df, df, select, 'user')
+user_scaled = [weighted_user_df.loc['user'].values]
+user_group, user_include_df = RML.user_clustering(basic_df, df , user_scaled, first_pca, first_kmeans)
+result_dong_list = RML.similarity(user_df, df.loc[user_include_df.index.values], "user",3)
+print(user_include_df.loc[result_dong_list]['DONG'].values)
 
 def index(request):
     return render(request, 'recommend_app/index.html')
@@ -52,5 +65,20 @@ def protoSubmit(request):
     return render(request, 'recommend_app/prototype2.html', content)
 
 def categoryRanking(request):
-    dong_cnt = DongCnt.objects
-    return render(request, 'recommend_app/category_ranking.html', {'dong_cnt': dong_cnt})
+    dict_list = []
+    cate_list = ['transportation', 'safety', 'noise_vibration_num', 'leisure_num', 'gym_num', 'golf_num', 'park_num', 'facilities', 'medical', 'starbucks_num', 'mc_num', 'vegan_cnt', 'coliving_num', 'education', 'parenting', 'kids_num', 'ani_hspt_num', 'safe_dlvr_num', 'car_shr_num', 'mz_pop_cnt']
+    
+    for cate in cate_list:
+        cnt_list = []
+        dong_list = []
+        dong_cnt = DongCnt.objects.values_list(cate, flat=True).order_by('-' + cate).all()
+        for i in range(0, 3):
+            cnt_list.append(dong_cnt[i])
+        dong = DongCnt.objects.values_list('dong', flat=True).order_by('-' + cate).all()
+        for i in range(0, 3):
+            dong_list.append(dong[i])
+        dictionary = {'category':cate, 'dong':dong_list, 'cnt':cnt_list}
+        dict_list.append(dictionary)
+    print(dict_list)
+
+    return render(request, 'recommend_app/category_ranking.html', {'ranking':dict_list})
