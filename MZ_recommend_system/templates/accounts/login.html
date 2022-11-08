@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
-</head>
-
-<body>
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
   <section class="ftco-section">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-6 d-flex"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
+            <div class="col-md-6 d-flex"><img src="{% static 'img/logo_trans.png' %}" width="80%"></div>
             <div class="col-md-6">
               <div class="login-wrap p-md-5 w-100">
                 <div class="d-flex">
@@ -46,6 +38,8 @@
       </div>
     </div>
   </section>
+
+<!--
   <script src="js/jquery.min.js"></script>
   <script src="js/popper.js+bootstrap.min.js+main.js.pagespeed.jc.JD3obyg0WD.js"></script>
   <script>
@@ -59,6 +53,5 @@
   </script>
   <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon="{&quot;rayId&quot;:&quot;762aabaf1c828322&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2022.10.3&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
   <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
-</body>
-
-</html>
+-->
+{% endblock %}
