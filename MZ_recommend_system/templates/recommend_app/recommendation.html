@@ -1,165 +1,280 @@
 
 {% extends "base.html" %}
 {% block content %}
-
-  <div class="py-5 text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1>선호도에 따라 5가지 요소에 별점을 주세요.</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><i class="fa text-primary mr-2 fa-car"></i>교통</li>
-            <div class="btn-group"> <a href="#" class="btn btn-primary">1점</a> <a href="#" class="btn btn-primary">2점</a> <a href="#" class="btn btn-primary">3점</a> <a href="#" class="btn btn-primary">4점</a><a href="#" class="btn btn-primary">5점</a> </div>
-            <li class="list-group-item"><i class="fa text-primary mr-2 fa-camera"></i>&nbsp;방범/치안</li>
-            <div class="btn-group"> <a href="#" class="btn btn-primary">1점</a> <a href="#" class="btn btn-primary">2점</a> <a href="#" class="btn btn-primary">3점</a> <a href="#" class="btn btn-primary">4점</a><a href="#" class="btn btn-primary">5점</a> </div>
-            <li class="list-group-item"><i class="fa text-primary mr-2 fa-tree"></i>&nbsp;환경, 힐링</li>
-            <div class="btn-group"> <a href="#" class="btn btn-primary">1점</a> <a href="#" class="btn btn-primary">2점</a> <a href="#" class="btn btn-primary">3점</a> <a href="#" class="btn btn-primary">4점</a><a href="#" class="btn btn-primary">5점</a> </div>
-            <li class="list-group-item"><i class="fa text-primary mr-2 fa-shopping-bag"></i>&nbsp;편의시설</li>
-            <div class="btn-group"> <a href="#" class="btn btn-primary">1점</a> <a href="#" class="btn btn-primary">2점</a> <a href="#" class="btn btn-primary">3점</a> <a href="#" class="btn btn-primary">4점</a><a href="#" class="btn btn-primary">5점</a> </div>
-            <li class="list-group-item"><i class="fa text-primary mr-2 fa-heartbeat"></i>&nbsp;생활/건강</li>
-            <div class="btn-group"> <a href="#" class="btn btn-primary">1점</a> <a href="#" class="btn btn-primary">2점</a> <a href="#" class="btn btn-primary">3점</a> <a href="#" class="btn btn-primary">4점</a><a href="#" class="btn btn-primary">5점</a> </div>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4" style="">
-          <div class="card text-white bg-primary mb-3">
-            <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;주변 이웃</div>
-            <div class="card-body" style="">
-              <a class="btn btn-primary" href="#" style="">조용한 동네</a>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div>
-              <p class="card-text"><br><br><br><br></p>
-            </div>
+  <form class="form-horizontal" action="#" method="POST">
+    {% csrf_token %}
+    <div class="py-5 text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>선호도에 따라 5가지 요소에 별점을 주세요.</h1>
           </div>
         </div>
-        <div class="col-md-4" style="">
-          <div class="card text-white bg-primary mb-3">
-            <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;라이프 스타일</div>
-            <div class="card-body" style="">
-              <a class="btn btn-primary" href="#">동물병원</a>
+      </div>
+    </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa text-primary mr-2 fa-car"></i>교통</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div><a class="btn btn-primary" href="#">나눔카</a>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="transportation" id="transportation" value=1> 1점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="transportation" id="transportation" value=2> 2점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="transportation" id="transportation" value=3> 3점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="transportation" id="transportation" value=4> 4점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="transportation" id="transportation" value=5> 5점 </label>
+              </div>
+
+              <li class="list-group-item"><i class="fa text-primary mr-2 fa-camera"></i>&nbsp;방범/치안</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div><a class="btn btn-primary" href="#">골프장</a>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="safety" id="safety" value=1> 1점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="safety" id="safety" value=2> 2점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="safety" id="safety" value=3> 3점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="safety" id="safety" value=4> 4점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="safety" id="safety" value=5> 5점 </label>
+              </div>
+
+              <li class="list-group-item"><i class="fa text-primary mr-2 fa-tree"></i>&nbsp;환경, 힐링</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div><a class="btn btn-primary" href="#">헬스장</a>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="park_num" id="park_num" value=1> 1점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="park_num" id="park_num" value=2> 2점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="park_num" id="park_num" value=3> 3점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="park_num" id="park_num" value=4> 4점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="park_num" id="park_num" value=5> 5점 </label>
+              </div>
+
+              <li class="list-group-item"><i class="fa text-primary mr-2 fa-shopping-bag"></i>&nbsp;편의시설</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div><a class="btn btn-primary" href="#">실내레저시설(볼링장, 수영장)</a>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="facilities" id="facilities" value=1> 1점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="facilities" id="facilities" value=2> 2점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="facilities" id="facilities" value=3> 3점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="facilities" id="facilities" value=4> 4점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="facilities" id="facilities" value=5> 5점 </label>
+              </div>
+
+              <li class="list-group-item"><i class="fa text-primary mr-2 fa-heartbeat"></i>&nbsp;생활/건강</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                  <input type="radio" name="options" id="option1" autocomplete="off" checked="">선택</label>
-                <label class="btn btn-primary">해제</label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="medical" id="medical" value=1> 1점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="medical" id="medical" value=2> 2점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="medical" id="medical" value=3> 3점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="medical" id="medical" value=4> 4점 </label>
+                <label class="btn btn-primary px-4">
+                  <input type="radio" name="medical" id="medical" value=5> 5점 </label>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-4" style="">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;주변 이웃</div>
+              <div class="card-body" style="">
+                <a class="btn btn-primary" href="#" style="">조용한 동네</a>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="noise_vibration_num" id="noise_vibration_num" value=1> 선택 </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="noise_vibration_num" id="noise_vibration_num" value=0> 해제 </label>
+                </div>
+                <p class="card-text"><br><br><br><br></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" style="">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;라이프 스타일</div>
+              <div class="card-body" style="">
+                <a class="btn btn-primary" href="#">동물병원</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="ani_hspt_num" id="ani_hspt_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="ani_hspt_num" id="ani_hspt_num" value=0>해제</label>
+                </div>
+
+                <a class="btn btn-primary" href="#">나눔카</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="car_shr_num" id="car_shr_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="car_shr_num" id="car_shr_num" value=0>해제</label>
+                </div>
+
+                <a class="btn btn-primary" href="#">골프장</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="golf_num" id="golf_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="golf_num" id="golf_num" value=0>해제</label>
+                </div>
+
+                <a class="btn btn-primary" href="#">헬스장</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="gym_num" id="gym_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="gym_num" id="gym_num" value=0>해제</label>
+                </div>
+                
+                <a class="btn btn-primary" href="#">실내레저시설(볼링장, 수영장)</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="leisure_num" id="leisure_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="leisure_num" id="leisure_num" value=0>해제</label>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card text-white bg-primary mb-3">
-            <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;교육/육아</div>
-            <div class="card-body">
-              <a class="btn btn-primary" href="#">교육</a>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div><a class="btn btn-primary" href="#">육아</a>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div><a class="btn btn-primary" href="#">키즈카페</a>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div>
-              <p class="card-text"><br><br><br></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-5" style="">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6" style="">
-          <div class="card text-white bg-primary mb-3">
-            <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 식습관</div>
-            <div class="card-body" style="">
-              <a class="btn btn-primary" href="#">채식-비건</a>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <a class="btn btn-primary" href="#">맥도날드</a><label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <a class="btn btn-primary" href="#">스타벅스</a><label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              </div>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons" style="">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card text-white bg-primary mb-3">
-            <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;생활환경</div>
-            <div class="card-body">
-              <a class="btn btn-primary" href="#">코리빙하우스</a>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              </div>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <a class="btn btn-primary" href="#">안심택배<br></a><label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
-              </div>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <a class="btn btn-primary" href="#">공원</a><label class="btn btn-primary active">선택</label>
-                <label class="btn btn-primary">해제</label>
+
+          <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;교육/육아</div>
+              <div class="card-body">
+                <a class="btn btn-primary" href="#">교육</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="education" id="education" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="education" id="education" value=0>해제</label>
+                </div>
+                
+                <a class="btn btn-primary" href="#">육아</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="parenting" id="parenting" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="parenting" id="parenting" value=0>해제</label>
+                </div>
+                
+                <a class="btn btn-primary" href="#">키즈카페</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="kids_num" id="kids_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="kids_num" id="kids_num" value=0>해제</label>
+                </div>
+                <p class="card-text"><br><br><br></p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12"><a class="btn btn-outline-primary btn-block" href="#">동네 찾기</a></div>
+
+    <div class="py-5" style="">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" style="">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 식습관</div>
+              <div class="card-body" style="">
+                <a class="btn btn-primary" href="#">채식-비건</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="vegan_cnt" id="vegan_cnt" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="vegan_cnt" id="vegan_cnt" value=0>해제</label>
+                </div>
+                
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <a class="btn btn-primary" href="#">맥도날드</a>
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="mc_num" id="mc_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="mc_num" id="mc_num" value=0>해제</label>
+                </div>
+
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <a class="btn btn-primary" href="#">스타벅스</a>
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="starbucks_num" id="starbucks_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="starbucks_num" id="starbucks_num" value=0>해제</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;생활환경</div>
+              <div class="card-body">
+                <a class="btn btn-primary" href="#">코리빙하우스</a>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="coliving_num" id="coliving_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="coliving_num" id="coliving_num" value=0>해제</label>
+                </div>
+
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <a class="btn btn-primary" href="#">안심택배<br></a>
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="safe_dlvr_num" id="safe_dlvr_num" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="safe_dlvr_num" id="safe_dlvr_num" value=0>해제</label>
+                </div>
+
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <a class="btn btn-primary" href="#">MZ세대 인구수</a>
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="mz_pop_cnt" id="mz_pop_cnt" value=1>선택</label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="mz_pop_cnt" id="mz_pop_cnt" value=0>해제</label>
+                </div>
+                <input type="hidden" name="username" id="username" value="{{user.username}}">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <button type="'submit" class="btn btn-outline-primary btn-block" href="#">동네 찾기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+
 
 {% endblock %}

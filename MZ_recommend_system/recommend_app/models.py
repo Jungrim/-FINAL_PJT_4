@@ -11,7 +11,6 @@ from accounts.models import myuser
 
 class CateWeights(models.Model):
     idx = models.BigAutoField(primary_key=True)
-    dong_code = models.BigIntegerField(blank=True, null=True)
     username = models.ForeignKey(myuser, models.DO_NOTHING, db_column='username', to_field='username')
     car_shr_num = models.BigIntegerField(blank=True, null=True)
     ani_hspt_num = models.BigIntegerField(blank=True, null=True)
