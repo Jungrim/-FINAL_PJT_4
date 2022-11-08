@@ -25,22 +25,25 @@
         <div class="col-md-12">
           <ul class="nav nav-pills">
             <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">교통</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">치안</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabthree">조용한 동네</a> </li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabtwo">치안</a> </li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">조용한 동네</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">실내레저시설</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">헬스장</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">골프장</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">공원</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">편의시설</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">의료시설</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">스타벅스</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">맥도날드</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">채식</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">코리빙</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">교육</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">육아</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">키즈카페</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">동물병원</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">안심택배</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">나눔카</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">MZ세대 인구수</a> </li>
           </ul>
         </div>
       </div>
@@ -52,10 +55,7 @@
       <div class="row">
         <div class="col-3 col-md-4" style="">
           <ul class="nav nav-pills flex-column">
-            {% for dong_cnt in dong_cnt.all%}
-            <h1>{{dong_cnt.dong}}</h1>
-            <h1>{{dong_cnt.car_shr_num}}</h1>
-            {%endfor%}
+            <h1>{{ranking}}</h1>
             <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">1위</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">2위</a> </li>
             <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">3위</a> </li>

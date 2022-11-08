@@ -52,5 +52,20 @@ def protoSubmit(request):
     return render(request, 'recommend_app/prototype2.html', content)
 
 def categoryRanking(request):
-    dong_cnt = DongCnt.objects
-    return render(request, 'recommend_app/category_ranking.html', {'dong_cnt': dong_cnt})
+    dict_list = []
+    cate_list = ['transportation', 'safety', 'noise_vibration_num', 'leisure_num', 'gym_num', 'golf_num', 'park_num', 'facilities', 'medical', 'starbucks_num', 'mc_num', 'vegan_cnt', 'coliving_num', 'education', 'parenting', 'kids_num', 'ani_hspt_num', 'safe_dlvr_num', 'car_shr_num', 'mz_pop_cnt']
+    
+    for cate in cate_list:
+        cnt_list = []
+        dong_list = []
+        dong_cnt = DongCnt.objects.values_list(cate, flat=True).order_by('-' + cate).all()
+        for i in range(0, 3):
+            cnt_list.append(dong_cnt[i])
+        dong = DongCnt.objects.values_list('dong', flat=True).order_by('-' + cate).all()
+        for i in range(0, 3):
+            dong_list.append(dong[i])
+        dictionary = {'category':cate, 'dong':dong_list, 'cnt':cnt_list}
+        dict_list.append(dictionary)
+    print(dict_list)
+
+    return render(request, 'recommend_app/category_ranking.html', {'ranking':dict_list})
