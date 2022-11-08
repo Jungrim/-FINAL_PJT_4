@@ -1,2 +1,2 @@
-WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY="C:\web\-FINAL_PJT_4\instantclient_21_7\network\admin")))
+WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY="C:\workspaces\FINAL_PJT_4_DS&DE\instantclient_21_7\network\admin")))
 SSL_SERVER_DN_MATCH=yes

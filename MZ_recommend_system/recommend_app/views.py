@@ -34,7 +34,7 @@ def index(request):
     return render(request, 'recommend_app/index.html')
 
 def basicSelect(request):
-    return render(request, 'recommend_app/prototype1.html')
+    return render(request, 'recommend_app/basicSelect.html')
 
 def protoSubmit(request):
     # print(request)
