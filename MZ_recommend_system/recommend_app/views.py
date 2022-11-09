@@ -62,7 +62,7 @@ def categoryRanking(request):
         dong_list = []
         dong_cnt = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list(cate, flat=True).order_by('-' + cate).all()
         dong = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list('dong', flat=True).order_by('-' + cate).all()
-        
+
         for i in range(0, 3):
             cnt_list.append(dong_cnt[i])
             dong_list.append(dong[i])
@@ -77,8 +77,8 @@ def introduction(request):
     return render(request, 'recommend_app/introduction.html')
 
 def dongDetail(request, dong_name):
-    data = {"dong_name" : dong_name}
-    print(dong_name)
+    data = {"dong_name" : request.POST['dong_name']}
+    print(data)
 
     dict_list = []
     cate_list = ['transportation', 'safety', 'noise_vibration_num', 'leisure_num', 'gym_num', 'golf_num', 'park_num', 'facilities', 'medical', 'starbucks_num', 'mc_num', 'vegan_cnt', 'coliving_num', 'education', 'parenting', 'kids_num', 'ani_hspt_num', 'safe_dlvr_num', 'car_shr_num', 'mz_pop_cnt']
@@ -97,4 +97,5 @@ def dongDetail(request, dong_name):
         dictionary = {'category':cate, 'name':name_list, 'lat':lat_list, 'lon':lon_list}
         dict_list.append(dictionary)
     print(dict_list)
-    return render(request, 'recommend_app/dong_detail.html', {'data' : data})
+
+    return render(request, 'recommend_app/dong_detail.html', {'data' : data, 'infra':dict_list})
