@@ -45,8 +45,81 @@
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-6" style=""><iframe width="100%" height="400" src="https://maps.google.com/maps?q=San%20Francisco&amp;z=12&amp;t=k&amp;output=embed" scrolling="no" frameborder="0"></iframe></div>
-        <div class="col-md-5" style=""><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
+        <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+          <title>집</title>
+          <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=liyb9vr43o"></script>
+      </head>
+      <body>
+          <div id="map" style="width:100%;height:100vh;margin:0 auto;"></div>
+      
+      <script>
+      var HOME_PATH = window.HOME_PATH || '.';
+      
+      
+      map = new naver.maps.Map('map', {
+          center: new naver.maps.LatLng(36.31175, 127.3754709),
+          zoom: 13
+      });
+      
+      
+      var juyeonhouse = new naver.maps.LatLng(36.30260, 127.33838);
+      var hanbyeolhouse = new naver.maps.LatLng(36.32611, 127.41263);
+      
+      
+      var markers = [];
+      var infowindows = [];
+      
+      
+      markers.push(new naver.maps.Marker({
+          map: map,
+          position: juyeonhouse
+      }));
+      
+      infowindows.push(new naver.maps.InfoWindow({
+          content: [
+              '<div class="iw_inner">',
+              '   <h3>주연이네 집</h3>',
+              '</div>'
+          ].join('')
+      }));
+      
+      
+      markers.push(new naver.maps.Marker({
+          map: map,
+          position: hanbyeolhouse
+      }));
+      
+      infowindows.push(new naver.maps.InfoWindow({
+          content: [
+              '<div class="iw_inner">',
+              '   <h3>한별이네 집</h3>',
+              '</div>'
+          ].join('')
+      }));
+      
+      for(let i=0; i<markers.length; i++){
+          naver.maps.Event.addListener(markers[i], "click", function(e) {
+              if (infowindows[i].getMap()) {
+                  infowindows[i].close();
+              } else {
+                  infowindows[i].open(map, markers[i]);
+              }
+          });
+      }
+      
+      infowindows[0].open(map, markers[0]);
+      </script>
+      </body>
+      </div>
+    </div>
+  </div>
+
+        
+        
+        <!--div class="col-md-5" style=""><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div-->
       </div>
     </div>
   </div>

@@ -2,15 +2,63 @@
 {% block content %}
 {% load static %}
 
+<script>
+  var category_list = [];
+  var dong_list = [];
+  var cnt_list = [];
+</script>
+{% for rank in ranking %}
+  <script>
+    var category = "{{rank.category}}";
+    category_list.push(category);
+    var dong_rank = [];
+    var cnt_rank = [];
+  </script>
+
+  {% for dong in rank.dongs %}
+    <script>
+      var dong = "{{dong}}";
+      dong_rank.push(dong);
+    </script>
+  {% endfor %}
+
+  <script>
+    dong_list.push(dong_rank);
+  </script>
+
+  {% for count in rank.cnt %}
+    <script>
+      var cnt = "{{count}}";
+      cnt_rank.push(cnt);
+    </script>
+  {% endfor %}
+  
+  <script>
+    cnt_list.push(cnt_rank);
+  </script>
+  {% endfor %}
+
+<script>
+<!--  for (i = 0; i < category_list.length; i++)-->
+<!--  {-->
+<!--    document.writeln(category_list[i]);-->
+<!--    for (j = 0; j < dong_list; j++){-->
+<!--      document.writeln(dong_list[i]);-->
+<!--    }-->
+<!--    document.writeln(cnt_list[i]);-->
+<!--    document.writeln("<br><br>");-->
+<!--  }-->
+</script>
+
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <ul class="nav nav-pills">
-            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">교통</a> </li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabtwo">치안</a> </li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">조용한 동네</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">실내레저시설</a> </li>
+            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">교통</a></li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabtwo">치안</a></li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">조용한 동네</a></li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">실내레저시설</a></li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">헬스장</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">골프장</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">공원</a> </li>
@@ -38,7 +86,6 @@
       <div class="row">
         <div class="col-3 col-md-4" style="">
           <ul class="nav nav-pills flex-column">
-            <h1>{{ranking}}</h1>
             <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">1위</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">2위</a> </li>
             <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">3위</a> </li>
@@ -47,19 +94,106 @@
         <div class="col-9 col-md-4" style="">
           <div class="tab-content">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
-              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+              <p class="">
+                {% for rank in ranking %}
+                  {% if rank.category == 'transportation' %}
+                  <br>
+                  {% for dong in rank.dong %}
+                    {{dong}}
+                    <br>
+                  {% endfor %}
+                  {% for cnt in rank.cnt %}
+                    {{cnt}}
+                    <br>
+                  {% endfor %}
+                  {% endif %}
+                {% endfor %}
+              </p>
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
             </div>
             <div class="tab-pane fade" id="tabthree" role="tabpanel">
-              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
             </div>
           </div>
         </div>
-        <div class="col-md-4"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
+        <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+          <title>집</title>
+          <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=liyb9vr43o"></script>
+      </head>
+      <body>
+          <div id="map" style="width:100%;height:100vh;margin:0 auto;"></div>
+      
+      <script>
+      var HOME_PATH = window.HOME_PATH || '.';
+      
+      
+      map = new naver.maps.Map('map', {
+          center: new naver.maps.LatLng(36.31175, 127.3754709),
+          zoom: 13
+      });
+      
+      
+      var juyeonhouse = new naver.maps.LatLng(36.30260, 127.33838);
+      var hanbyeolhouse = new naver.maps.LatLng(36.32611, 127.41263);
+      
+      
+      var markers = [];
+      var infowindows = [];
+      
+      
+      markers.push(new naver.maps.Marker({
+          map: map,
+          position: juyeonhouse
+      }));
+      
+      infowindows.push(new naver.maps.InfoWindow({
+          content: [
+              '<div class="iw_inner">',
+              '   <h3>주연이네 집</h3>',
+              '</div>'
+          ].join('')
+      }));
+      
+      
+      markers.push(new naver.maps.Marker({
+          map: map,
+          position: hanbyeolhouse
+      }));
+      
+      infowindows.push(new naver.maps.InfoWindow({
+          content: [
+              '<div class="iw_inner">',
+              '   <h3>한별이네 집</h3>',
+              '</div>'
+          ].join('')
+      }));
+      
+      for(let i=0; i<markers.length; i++){
+          naver.maps.Event.addListener(markers[i], "click", function(e) {
+              if (infowindows[i].getMap()) {
+                  infowindows[i].close();
+              } else {
+                  infowindows[i].open(map, markers[i]);
+              }
+          });
+      }
+
+    
+      infowindows[0].open(map, markers[0]);
+      </script>
+        <!--div class="col-md-4"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div-->
       </div>
     </div>
   </div>
 
 {% endblock %}
+
+<script type="text/javascript">
+  $(function(){
+});
+</script>
