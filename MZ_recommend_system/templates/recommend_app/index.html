@@ -2,11 +2,19 @@
 {% extends "base.html" %}
 {% block content %}
   <!-- Cover -->
+  <style>
+  body {
+  margin-top: 90px;
+  font-family: 'Jua', sans-serif;
+  font-weight: 100;
+  /* 생략 */
+  }
+</style>
   <div class="align-items-center d-flex cover section-aquamarine py-5" style="	background-image: url(../../../Downloads/maxresdefault.jpg);	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
     <div class="container">
       <div class="row">
         <div class="align-self-center text-lg-left text-center col-lg-7">
-          <h1 class="mb-0 mt-5 display-4 w-100" style="">426개의 서울 행정동 중에서 나와 제일 잘 맞는&nbsp; 동네는 ?</h1>
+          <h1 class="mb-0 mt-5 display-4 w-100" style="">나와 제일 잘 맞는&nbsp; 동네는 ?</h1>
           <p class="mb-5" contenteditable="true">동네 어때가 찾아드려요!</p>
         </div>
         <div class="col-lg-5 p-3">
@@ -23,7 +31,7 @@
             <div class="form-group"> <label>연령대</label>
             </div>
             <div class="btn-group">
-              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
+              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 연령 </button>
               <div class="dropdown-menu"> <a class="dropdown-item" href="#">20 ~ 24</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" contenteditable="true">25~29</a>
