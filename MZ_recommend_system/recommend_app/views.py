@@ -12,7 +12,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import warnings
 import os
 
-from recommend_app.models import DongCnt
+from recommend_app.models import DongCnt, InfraAdmin
 from recommend_app.forms import WeightsForm
 import sys
 # sys.path.append("C:/workspaces/FINAL_PJT_4_DS&DE/MZ_recommend_system/recommend_app/ML_modeling")
@@ -60,14 +60,45 @@ def categoryRanking(request):
     for cate in cate_list:
         cnt_list = []
         dong_list = []
+        gu_list = []
         dong_cnt = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list(cate, flat=True).order_by('-' + cate).all()
-        for i in range(0, 3):
-            cnt_list.append(dong_cnt[i])
         dong = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list('dong', flat=True).order_by('-' + cate).all()
-        for i in range(0, 3):
+        gu = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list('gu', flat=True).order_by('-' + cate).all()
+
+        for i in range(0, 5):
+            cnt_list.append(dong_cnt[i])
             dong_list.append(dong[i])
-        dictionary = {'category':cate, 'dong':dong_list, 'cnt':cnt_list}
+            gu_list.append(gu[i])
+            
+        dictionary = {'category':cate, 'gu':gu_list, 'dong':dong_list, 'cnt':cnt_list}
         dict_list.append(dictionary)
     print(dict_list)
 
     return render(request, 'recommend_app/category_ranking.html', {'ranking':dict_list})
+
+def introduction(request):
+    return render(request, 'recommend_app/introduction.html')
+
+def dongDetail(request, dong_name):
+    data = {"dong_name" : request.POST['dong_name']}
+    print(data)
+
+    dict_list = []
+    cate_list = ['transportation', 'safety', 'noise_vibration_num', 'leisure_num', 'gym_num', 'golf_num', 'park_num', 'facilities', 'medical', 'starbucks_num', 'mc_num', 'vegan_cnt', 'coliving_num', 'education', 'parenting', 'kids_num', 'ani_hspt_num', 'safe_dlvr_num', 'car_shr_num', 'mz_pop_cnt']
+    
+    for cate in cate_list:
+        infra_name = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(dong__exact=dong_name).filter(cate__exact=cate).values_list('name', flat=True).order_by('-name').all()
+        infra_lat = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(dong__exact=dong_name).filter(cate__exact=cate).values_list('lat', flat=True).order_by('-name').all()
+        infra_lon = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(dong__exact=dong_name).filter(cate__exact=cate).values_list('lon', flat=True).order_by('-name').all()
+        name_list = []
+        lat_list = []
+        lon_list = []
+        for i in range(len(infra_name)):
+                name_list.append(infra_name[i])
+                lat_list.append(float(infra_lat[i]))
+                lon_list.append(float(infra_lon[i]))
+        dictionary = {'category':cate, 'name':name_list, 'lat':lat_list, 'lon':lon_list}
+        dict_list.append(dictionary)
+    print(dict_list)
+
+    return render(request, 'recommend_app/dong_detail.html', {'data' : data, 'infra':dict_list})
