@@ -2,15 +2,63 @@
 {% block content %}
 {% load static %}
 
+<script>
+  var category_list = [];
+  var dong_list = [];
+  var cnt_list = [];
+</script>
+{% for rank in ranking %}
+  <script>
+    var category = "{{rank.category}}";
+    category_list.push(category);
+    var dong_rank = [];
+    var cnt_rank = [];
+  </script>
+
+  {% for dong in rank.dongs %}
+    <script>
+      var dong = "{{dong}}";
+      dong_rank.push(dong);
+    </script>
+  {% endfor %}
+
+  <script>
+    dong_list.push(dong_rank);
+  </script>
+
+  {% for count in rank.cnt %}
+    <script>
+      var cnt = "{{count}}";
+      cnt_rank.push(cnt);
+    </script>
+  {% endfor %}
+  
+  <script>
+    cnt_list.push(cnt_rank);
+  </script>
+  {% endfor %}
+
+<script>
+  for (i = 0; i < category_list.length; i++)
+  {
+    document.writeln(category_list[i]);
+    for (j = 0; j < dong_list; j++){
+      document.writeln(dong_list[i]);
+    }
+    document.writeln(cnt_list[i]);
+    document.writeln("<br><br>");
+  }
+</script>
+
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <ul class="nav nav-pills">
-            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">교통</a> </li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabtwo">치안</a> </li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">조용한 동네</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">실내레저시설</a> </li>
+            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">교통</a></li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabtwo">치안</a></li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">조용한 동네</a></li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">실내레저시설</a></li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">헬스장</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">골프장</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">공원</a> </li>
@@ -38,7 +86,6 @@
       <div class="row">
         <div class="col-3 col-md-4" style="">
           <ul class="nav nav-pills flex-column">
-            <h1>{{ranking}}</h1>
             <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">1위</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">2위</a> </li>
             <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">3위</a> </li>
@@ -47,13 +94,22 @@
         <div class="col-9 col-md-4" style="">
           <div class="tab-content">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
-              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+              <p class="">
+                {%for rank in ranking%}
+                  {% if rank.category == 'transportation' %}
+                  <br>
+                  {{rank.dong}}
+                  <br>
+                  {{rank.cnt}}
+                  {%endif%}
+                {%endfor%}
+              </p>
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
-              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
             </div>
             <div class="tab-pane fade" id="tabthree" role="tabpanel">
-              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OO동</p>
+              <p class="">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
             </div>
           </div>
         </div>
@@ -63,3 +119,8 @@
   </div>
 
 {% endblock %}
+
+<script type="text/javascript">
+  $(function(){
+});
+</script>
