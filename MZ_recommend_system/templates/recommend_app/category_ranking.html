@@ -3,65 +3,39 @@
 {% load static %}
 
 <script>
-  var category_list = [];
-  var dong_list = [];
-  var cnt_list = [];
-</script>
-{% for rank in ranking %}
-  <script>
-    var category = "{{rank.category}}";
-    category_list.push(category);
-    var dong_rank = [];
-    var cnt_rank = [];
-  </script>
+  var replace_str = "{{ranking}}".replaceAll("&#x27;","\"");
+  var rank_data = JSON.parse(replace_str);
+  console.log(rank_data);
+  function ranking_func(str){
 
-  {% for dong in rank.dongs %}
-    <script>
-      var dong = "{{dong}}";
-      dong_rank.push(dong);
-    </script>
-  {% endfor %}
+    for(var i in rank_data){
+      if(rank_data[i].category == str){
 
-  <script>
-    dong_list.push(dong_rank);
-  </script>
+        var f = document.getElementById("first");
+        var s = document.getElementById("second");
+        var t = document.getElementById("third");
+        f.text = rank_data[i].dong[0];
+        s.text = rank_data[i].dong[1];
+        t.text = rank_data[i].dong[2];
 
-  {% for count in rank.cnt %}
-    <script>
-      var cnt = "{{count}}";
-      cnt_rank.push(cnt);
-    </script>
-  {% endfor %}
-  
-  <script>
-    cnt_list.push(cnt_rank);
-  </script>
-  {% endfor %}
+      }
+    }
+}
 
-<script>
-<!--  for (i = 0; i < category_list.length; i++)-->
-<!--  {-->
-<!--    document.writeln(category_list[i]);-->
-<!--    for (j = 0; j < dong_list; j++){-->
-<!--      document.writeln(dong_list[i]);-->
-<!--    }-->
-<!--    document.writeln(cnt_list[i]);-->
-<!--    document.writeln("<br><br>");-->
-<!--  }-->
 </script>
 
-  <div class="py-5">
+ <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <ul class="nav nav-pills">
-            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">교통</a></li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabtwo">치안</a></li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">조용한 동네</a></li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">실내레저시설</a></li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">헬스장</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">골프장</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">공원</a> </li>
+            <li class="nav-item"> <button onclick="ranking_func('transportation')"  class="active nav-link" data-toggle="pill" data-target="#tabone">교통</button></li>
+            <li class="nav-item"> <button onclick="ranking_func('safety')"  class="nav-link" data-toggle="pill" data-target="#tabtwo">치안</button></li>
+            <li class="nav-item"> <button onclick="ranking_func('noise_vibration_num')" class="nav-link" data-toggle="pill" data-target="#tabthree">조용한 동네</button></li>
+            <li class="nav-item"> <button onclick="ranking_func('leisure_num')" class="nav-link"  data-toggle="pill" data-target="#tabtwo">실내레저시설</button></li>
+            <li class="nav-item"> <button onclick="ranking_func('gym_num')" class="nav-link"  data-toggle="pill" data-target="#tabtwo">헬스장</button> </li>
+            <li class="nav-item"> <button onclick="ranking_func('golf_num')" class="nav-link"  data-toggle="pill" data-target="#tabtwo">골프장</button> </li>
+            <li class="nav-item"> <button onclick="ranking_func('park_num')" class="nav-link" data-toggle="pill" data-target="#tabtwo">공원</button> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">편의시설</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">의료시설</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">스타벅스</a> </li>
@@ -86,28 +60,16 @@
       <div class="row">
         <div class="col-3 col-md-4" style="">
           <ul class="nav nav-pills flex-column">
-            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">1위</a> </li>
-            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">2위</a> </li>
-            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree">3위</a> </li>
+            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone" id="first">1위</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo" id="second">2위</a> </li>
+            <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree" id="third">3위</a> </li>
           </ul>
         </div>
         <div class="col-9 col-md-4" style="">
           <div class="tab-content">
             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
               <p class="">
-                {% for rank in ranking %}
-                  {% if rank.category == 'transportation' %}
-                  <br>
-                  {% for dong in rank.dong %}
-                    {{dong}}
-                    <br>
-                  {% endfor %}
-                  {% for cnt in rank.cnt %}
-                    {{cnt}}
-                    <br>
-                  {% endfor %}
-                  {% endif %}
-                {% endfor %}
+
               </p>
             </div>
             <div class="tab-pane fade" id="tabtwo" role="tabpanel">
