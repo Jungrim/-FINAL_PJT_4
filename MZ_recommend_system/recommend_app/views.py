@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import json
 
@@ -34,6 +34,8 @@ def index(request):
     return render(request, 'recommend_app/index.html')
 
 def basicSelect(request):
+    if not request.user.is_authenticated:
+        return redirect('accounts/login')
     if request.method == 'POST':
         form = WeightsForm(request.POST)
         if form.is_valid():
