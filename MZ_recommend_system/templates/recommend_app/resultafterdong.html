@@ -19,51 +19,74 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="../static/css/aquamarine.css" type="text/css" style="">
   <!-- Script: Make my navbar transparent when the document is scrolled to top -->
+<!--        스타일적용 시작-->
+  <style>
+    .ourdong{
+      font-size : 80px;
+      position : relative;
+      top : -310px;
+      left : -100px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .textandbox{
+      position : relative;
+      top : -80px;
+
+    }
+    .chartname{
+    position : relative;
+    left : 800px;
+
+    }
+    i {
+    font-size: 60px;
+    position : relative;
+    top : -80px;
+    }
+
+  </style>
+<!--        스타일적용 끝-->
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-          <h3 class="">차트들어가는곳 </h3>
+          <h3 class="chartname">이런 동네! </h3>
           <canvas id="radar-chart" width="250" height="250"></canvas>
         </div>
       </div>
     </div>
   </div>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="ourdong">우리 동네는요! </h2>
+  <div class="textandbox">
+    <div class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="ourdong">우리 동네는요! </h2>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="py-5 text-center">
-    <div class="container">
-      <div class="row">
-<!--        스타일적용 시작-->
-        <style>
-          i {
-          font-size: 40px;
-          }
-        </style>
-<!--        스타일적용 끝-->
-<!--        i 아이콘-->
-        <div class="col-lg-3 col-6 p-4"> <i class="fa-sharp fa-solid fa-thumbs-up"></i>
-          <h4> <b>스타벅스</b> </h4>
-        </div>
-        <div class="col-lg-3 col-6 p-4"> <i class="fa-solid fa-heart"></i>
-          <h4 contenteditable="true" > <b>젊은 동네</b> </h4>
-        </div>
-        <div class="col-lg-3 col-6 p-4"> <i class="fa-solid fa-star"></i>
-          <h4> <b>카 쉐어링</b> </h4>
-        </div>
-        <div class="col-lg-3 col-6 p-4"> <i class="fa-solid fa-thumbs-down"></i>
-          <h4> <b>반려동물</b> </h4>
+      <div class="py-5 text-center">
+        <div class="container">
+          <div class="row">
+              <!--        i 아이콘-->
+            <div class="col-lg-3 col-6 p-4"> <i class="fa-sharp fa-solid fa-thumbs-up"></i>
+              <h4> <b>스타벅스</b> </h4>
+            </div>
+            <div class="col-lg-3 col-6 p-4"> <i class="fa-solid fa-heart"></i>
+              <h4 contenteditable="true" > <b>젊은 동네</b> </h4>
+            </div>
+            <div class="col-lg-3 col-6 p-4"> <i class="fa-solid fa-star"></i>
+              <h4> <b>카 쉐어링</b> </h4>
+            </div>
+            <div class="col-lg-3 col-6 p-4"> <i class="fa-solid fa-thumbs-down"></i>
+              <h4> <b>반려동물</b> </h4>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
   </div>
   <script src="js/navbar-ontop.js"></script>
   <!-- Script: Animated entrance -->
