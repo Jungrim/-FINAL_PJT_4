@@ -8,5 +8,5 @@ urlpatterns = [
     path('basicSelect', views.basicSelect, name='basicSelect'),
     path('categoryRanking',views.categoryRanking, name='categoryRanking'),
     path('introduction',views.introduction, name='introduction'),
-    path('dongDetail/<str:dong_name>',views.dongDetail, name='dongDetail'),
+    path('dongDetail',views.dongDetail, name='dongDetail'),
 ]

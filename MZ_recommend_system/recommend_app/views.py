@@ -75,7 +75,7 @@ def categoryRanking(request):
 def introduction(request):
     return render(request, 'recommend_app/introduction.html')
 
-def dongDetail(request, dong_name):
-    data = {"dong_name" : dong_name}
-    print(dong_name)
+def dongDetail(request):
+    data = {"dong_name" : request.POST['dong_name']}
+    print(data)
     return render(request, 'recommend_app/dong_detail.html', {'data' : data})
