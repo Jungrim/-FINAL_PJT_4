@@ -61,5 +61,81 @@
 
 }
 
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.background_img {
+margin-top: 90px;
+background-image: url(../static/img/09238DF7-7E48-4185-A9AD-0BC1C40767DD_1_201_a.jpeg);
+background-position: top left;
+background-size: 100%;	background-repeat: repeat;"
+}
+
+#textindex{
+margin-left:-40px;
+margin-top:40px;
+
+}
+.firstparagraph{
+font-family: 'Pretendard-Regular';
+padding-bottom: 30px;
+font-weight: 700;
+font-size : 60px;
+
+}
+#dongnae{
+font-family: 'Pretendard-Regular';
+font-weight: 400;
+font-size : 35px;
+margin-inline: 120px;
+margin-bottom: auto;
+}
+
+h4{
+font-family: 'Pretendard-Regular';
+margin-right: auto;
+
+/*padding-top: 120px;*/
+font-weight: 700;
+font-size : 50px;
+}
+#select_box {
+font-family: 'Pretendard-Regular';
+font-weight: 300;
+font-size: 20px;
+}
+
+.form-control{
+margin-top: -5px;
+margin-bottom : 10px;
+}
+.form-group{
+margin-top: 15px;
+/*margin-bottom : 10px;*/
+}
+
+#genderbutton{
+margin-top: -30px;
+margin-bottom : 10px;
+
+}
+#age_button{
+margin-top: -25px;
+margin-bottom : 10px;
+
+}
+
+.indexsubmit_button{
+/*margin-top: -10px;*/
+margin-bottom : -10px;
+margin-top : -10px;
+
+}
+
 
 
