@@ -71,9 +71,3 @@ def categoryRanking(request):
     print(dict_list)
 
     return render(request, 'recommend_app/category_ranking.html', {'ranking':dict_list})
-
-def result(request):
-    return render(request,'recommend_app/result.html' )
-
-def similar(request):
-    return render(request,'recommend_app/similar.html' )

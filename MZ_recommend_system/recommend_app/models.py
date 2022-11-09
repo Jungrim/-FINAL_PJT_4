@@ -32,11 +32,9 @@ class CateWeights(models.Model):
     safety = models.FloatField(blank=True, null=True)
     medical = models.BigIntegerField(blank=True, null=True)
     facilities = models.BigIntegerField(blank=True, null=True)
-
     class Meta:
         managed = False
         db_table = 'CATE_WEIGHTS'
-
 
 class DongCnt(models.Model):
     dong_code = models.BigIntegerField()
@@ -63,8 +61,21 @@ class DongCnt(models.Model):
     medical = models.FloatField(blank=True, null=True)
     facilities = models.FloatField(blank=True, null=True)
     std_day = models.CharField(primary_key=True, max_length=30)
-
     class Meta:
         managed = False
         db_table = 'DONG_CNT'
         unique_together = (('std_day', 'dong_code'),)
+
+class InfraAdmin(models.Model):
+    cate = models.CharField(max_length=30, blank=True, null=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    dong_code = models.BigIntegerField(blank=True, null=True)
+    lon = models.DecimalField(max_digits=38, decimal_places=7, blank=True, null=True)
+    lat = models.DecimalField(max_digits=38, decimal_places=8, blank=True, null=True)
+    std_day = models.CharField(max_length=10, blank=True, null=True)
+    gu = models.CharField(max_length=26, blank=True, null=True)
+    dong = models.CharField(max_length=26, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'INFRA_ADMIN'
