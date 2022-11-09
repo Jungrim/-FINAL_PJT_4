@@ -60,14 +60,17 @@ def categoryRanking(request):
     for cate in cate_list:
         cnt_list = []
         dong_list = []
+        gu_list = []
         dong_cnt = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list(cate, flat=True).order_by('-' + cate).all()
         dong = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list('dong', flat=True).order_by('-' + cate).all()
+        gu = DongCnt.objects.filter(std_day__exact='2022-11-08').values_list('gu', flat=True).order_by('-' + cate).all()
 
-        for i in range(0, 3):
+        for i in range(0, 5):
             cnt_list.append(dong_cnt[i])
             dong_list.append(dong[i])
+            gu_list.append(gu[i])
             
-        dictionary = {'category':cate, 'dong':dong_list, 'cnt':cnt_list}
+        dictionary = {'category':cate, 'gu':gu_list, 'dong':dong_list, 'cnt':cnt_list}
         dict_list.append(dictionary)
     print(dict_list)
 
