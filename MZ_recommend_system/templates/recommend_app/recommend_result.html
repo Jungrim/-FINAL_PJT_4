@@ -1,7 +1,14 @@
 
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 
-{{result.dong}}
+
+{% for dong_name in result.dong %}
+<form action="{% url 'recommend_app:dongDetail' dong_name %}" method="post"> {% csrf_token %}
+    <button name="{{dong_name}}" value="{{dong_name}}">{{dong_name}}</button>
+</form>
+{% endfor %}
+
 
 {% endblock %}

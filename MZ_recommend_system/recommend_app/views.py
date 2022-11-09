@@ -71,3 +71,11 @@ def categoryRanking(request):
     print(dict_list)
 
     return render(request, 'recommend_app/category_ranking.html', {'ranking':dict_list})
+
+def introduction(request):
+    return render(request, 'recommend_app/introduction.html')
+
+def dongDetail(request, dong_name):
+    data = {"dong_name" : dong_name}
+    print(dong_name)
+    return render(request, 'recommend_app/dong_detail.html', {'data' : data})
