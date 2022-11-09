@@ -14,10 +14,13 @@
         var f = document.getElementById("first");
         var s = document.getElementById("second");
         var t = document.getElementById("third");
-        f.text = rank_data[i].dong[0];
-        s.text = rank_data[i].dong[1];
-        t.text = rank_data[i].dong[2];
-
+        var four = document.getElementById("fourth");
+        var fif = document.getElementById("fifth");
+        f.text = rank_data[i].gu[0] + " " + rank_data[i].dong[0];
+        s.text = rank_data[i].gu[1] + " " + rank_data[i].dong[1];
+        t.text = rank_data[i].gu[2] + " " + rank_data[i].dong[2];
+        four.text = rank_data[i].gu[3] + " " + rank_data[i].dong[3];
+        fif.text = rank_data[i].gu[4] + " " + rank_data[i].dong[4];
       }
     }
 }
@@ -63,6 +66,9 @@
             <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone" id="first">1위</a> </li>
             <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo" id="second">2위</a> </li>
             <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree" id="third">3위</a> </li>
+         <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree" id="fourth">4위</a> </li>
+         <li class="nav-item"> <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree" id="fifth">5위</a> </li>
+
           </ul>
         </div>
         <div class="col-9 col-md-4" style="">
