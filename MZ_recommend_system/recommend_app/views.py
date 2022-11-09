@@ -45,7 +45,7 @@ def basicSelect(request):
         recommend_dong_list = user_include_df.loc[result_dong_list]['DONG'].values
         result = {"dong": recommend_dong_list, "weight_user": user}
 
-        return render(request, 'recommend_app/recommendation_result.html', {'result': result})
+        return render(request, 'recommend_app/recommend_result.html', {'result': result})
     else:
         form = WeightsForm()
 
