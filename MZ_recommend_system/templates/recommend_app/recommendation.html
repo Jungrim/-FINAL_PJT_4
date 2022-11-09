@@ -1,16 +1,20 @@
 
 {% extends "base.html" %}
 {% block content %}
+
+<link rel="stylesheet" href="../static/css/style.css" type="text/css">
+
+
 <form class="form-horizontal" action="#" method="POST"> {% csrf_token %} <div class="py-5 text-center">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h1>선호도에 따라 5가지 요소에 별점을 주세요.</h1>
+            <h1 id="선호도제목">선호도에 따라 5가지 요소에 점수를 주세요.</h1>
           </div>
         </div>
       </div>
     </div>
-    <div class="py-5">
+    <div class="py-5" id="allfeatuers">
       <div class="container">
         <div class="row">
           <div class="col-md-12">

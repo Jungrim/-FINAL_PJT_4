@@ -67,6 +67,22 @@
     font-weight: 400;
     font-style: normal;
 }
+.container{
+    font-family: 'Pretendard-Regular';
+
+
+}
+
+#선호도제목{
+    margin-top : 10% ;
+
+}
+
+#allfeatuers{
+    margin-top : -8% ;
+
+
+}
 
 
 .background_img {
@@ -77,15 +93,18 @@ background-size: 100%;	background-repeat: repeat;"
 }
 
 #textindex{
-margin-left:-40px;
-margin-top:40px;
+position : relative;
+left : 250px;
+margin-top : 20%;
+margin-bottom : 10%;
 
 }
-.firstparagraph{
+h1{
 font-family: 'Pretendard-Regular';
 padding-bottom: 30px;
 font-weight: 700;
 font-size : 60px;
+
 
 }
 #dongnae{
