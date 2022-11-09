@@ -13,7 +13,7 @@ import warnings
 import os
 
 from recommend_app.models import DongCnt
-
+from recommend_app.forms import WeightsForm
 import sys
 # sys.path.append("C:/workspaces/FINAL_PJT_4_DS&DE/MZ_recommend_system/recommend_app/ML_modeling")
 
@@ -34,22 +34,15 @@ def index(request):
     return render(request, 'recommend_app/index.html')
 
 def basicSelect(request):
-    # if request.method == 'POST':
-    #     form = UserForm(request.POST)
-    #     if form.is_valid():
-    #         # 넘어온 데이터 db에 저장
-    #         form.save()
-    #         # user_name, password1을 추출 해서
-    #         user_name = form.cleaned_data.get('username')
-    #         raw_password = form.cleaned_data.get('password1')
-    #         # 로그인 진행
-    #         user = authenticate(username=user_name, password=raw_password)
-    #         login(request, user)
-    #         return redirect('/')
-    # else:
-    #     form = UserForm()
-    # return render(request, 'recommend_app/recommendation.html', {'form':form})
-    return render(request, 'recommend_app/recommendation.html')
+    if request.method == 'POST':
+        form = WeightsForm(request.POST)
+        if form.is_valid():
+            # 넘어온 데이터 db에 저장
+            form.save()
+    else:
+        form = WeightsForm()
+    return render(request, 'recommend_app/recommendation.html', {'form':form})
+    # return render(request, 'recommend_app/recommendation.html')
 
 def protoSubmit(request):
     # print(request)
