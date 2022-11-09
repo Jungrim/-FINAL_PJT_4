@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('basicSelect', views.basicSelect, name='basicSelect'),
     path('protoSubmit',views.protoSubmit),
-    path('categoryRanking',views.categoryRanking, name='categoryRanking'),
+    path('result',views.result, name='result'),
+    path('similar',views.similar, name='similar')
 ]
