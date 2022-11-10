@@ -12,4 +12,6 @@ urlpatterns = [
     path('dongDetail',views.dongDetail, name='dongDetail'),
     path('facility_info',views.facility_info, name='facility_info'),
     path('similarDong',views.similarDong, name='similarDong'),
+    path('similarRecommend',views.similarRecommend, name='similarRecommend'),
+
 ]

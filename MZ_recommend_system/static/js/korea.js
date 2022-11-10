@@ -4,21 +4,22 @@ window.onload = function() {
 
 //지도 그리기
 function drawMap(target) {
-    // const center = d3.geoCentroid(geojson); // 지도 중심
     // 캔버스 설정
-    var width = 2000;
-    var height = 400;
+    var width = 1200;
+    var height = 500;
     
-    var initialScale = 5500;
-    var initialX = -11200; //초기 위치값 X
-    var initialY = 4080; //초기 위치값 Y
+    var initialScale = 200000;
+    var initialX = -11550; //초기 위치값 X
+    var initialY = 4100; //초기 위치값 Y
+    var centered;
     var labels;
 
     // 투사법 설정
-    var projection = d3.geo
-        .mercator()
+    var projection = d3.geo.mercator()
         .scale(initialScale)
-        .translate([initialX, initialY]);
+        .center([126.9895, 37.5651])
+        .translate([width/2, height/2]);
+
 
     // 지도 path
     var path = d3.geo.path()
@@ -32,8 +33,7 @@ function drawMap(target) {
         .on('zoom', zoom);
 
     // 지도를 그릴 svg 설정
-    var svg = d3.select(target)
-        .append('svg')
+    var svg = d3.select(target).append('svg')
         .attr('width', width)
         .attr('height', height)
         .attr('id', 'map')
@@ -42,6 +42,9 @@ function drawMap(target) {
     var states = svg.append('g')
         .attr('id', 'states')
         .call(zoom);
+        
+    // var place = svg.append(g)
+    //     .attr("id","place");
 
     states.append('rect')
         .attr('class', 'background')
@@ -49,48 +52,61 @@ function drawMap(target) {
         .attr('height', height);
 
     //geoJson데이터를 파싱하여 지도그리기
-    d3.json('../json/dong.json', function(json) {
+    d3.json('../static/json/dong.json', function(json) {
         states.selectAll('path') //지역 설정
             .data(json.features)
-            .enter()
-            .append('path')
+            .enter().append('path')
             .attr('d', path)
             .attr('id', function(d) {
                 return 'path-' + d.properties.sidonm;
-            });
+            })
+            .on("click",click);
 
-        labels = states
-            .selectAll('text')
+        labels = states.selectAll('text')
             .data(json.features) //라벨표시
-            .enter()
-            .append('text')
+            .enter().append('text')
             .attr('transform', translateTolabel)
             .attr('id', function(d) {
                 return 'label-' + d.properties.sidonm;
             })
             .attr('text-anchor', 'middle')
             .attr('dy', '.35em')
+            .on("click", click)
             .text(function(d) {
                 return d.properties.adm_nm; // 동 이름 표시
             });
     });
 
+    function click(d) {
+        var x, y, k;
+
+        if (d && centered !== d) {
+            var centroid = path.centroid(d);
+            x = centroid[0];
+            y = centroid[1];
+            k = 4;
+            centered = d;
+            } else {
+            x = width / 2;
+            y = height / 2;
+            k = 1;
+            centered = null;
+        }
+        states.selectAll("path")
+            .classed("active", centered && function(d) { return d === centered; });
+    
+        states.transition()
+            .duration(500)
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+            .style("stroke-width", 1.5 / k + "px");
+        var element = document.getElementById("dong_code");
+        element.value = d.properties.adm_cd2;
+        console.log(element);
+    }
+
     //텍스트 위치 조절 - 하드코딩으로 위치 조절을 했습니다.
     function translateTolabel(d) {
         var arr = path.centroid(d);
-        if (d.properties.code == 31) {
-            //서울 경기도 이름 겹쳐서 경기도 내리기
-            arr[1] +=
-                d3.event && d3.event.scale
-                    ? d3.event.scale / height + 20
-                    : initialScale / height + 20;
-        } else if (d.properties.code == 34) {
-            //충남은 조금 더 내리기
-            arr[1] +=
-                d3.event && d3.event.scale
-                    ? d3.event.scale / height + 10
-                    : initialScale / height + 10;
-        }
         return 'translate(' + arr + ')';
     }
 
