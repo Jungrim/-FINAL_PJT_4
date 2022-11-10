@@ -87,16 +87,23 @@
 
 <script>
 
+  const dongLat = '{{ dong_coordinate.lat }}'
+  const dongLon = '{{ dong_coordinate.lon }}'
+  console.log(typeof(dongLat))
+  console.log(typeof(dongLon))
+  console.log(dongLat)
+  console.log(dongLon)
   var HOME_PATH = window.HOME_PATH || '.';
   var markers = [];
   var infowindows = [];
 
   map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng(36.31175, 127.3754709),
-    zoom: 13
+    // center: new naver.maps.LatLng(36.31175, 127.3754709),
+    center: new naver.maps.LatLng(parseFloat(dongLat), parseFloat(dongLon)),
+    zoom: 17
   });
 
-  const dongName = '{{ data.dong_name}}'
+  const dongName = '{{ data.dong_name }}'
   const guName = '{{  data.gu_name  }}'
 
   var replace_str = "{{infra}}";
@@ -145,16 +152,159 @@
     return response.json();
   }
 
-  function drawMarker(names, lats, lons) {
+  function drawMarker(names, lats, lons, cate) {
 
     markers = [];
     infowindows = [];
 
+    if (cate == 'transportation'){
+      var icon = {
+        // url: '../../static/img/free-icon-exercise-2928160.png',
+        content: '<i class="fa text-primary mr-2 fa-car">',
+        size: new naver.maps.Size(22, 35),
+        origin: new naver.maps.Point(0, 0),
+        anchor: new naver.maps.Point(11, 35)
+      };
+      }else if (cate == 'safety'){
+        var icon = {
+          // url: '../../static/img/free-icon-exercise-2928160.png',
+          content: '<i class="fa text-primary mr-2 fa-camera">',
+          size: new naver.maps.Size(22, 35),
+          origin: new naver.maps.Point(0, 0),
+          anchor: new naver.maps.Point(11, 35)
+        };
+      }else if (cate == 'medical'){
+        var icon = {
+            // url: '../../static/img/free-icon-exercise-2928160.png',
+            content: '<i class="fa text-primary mr-2 fa-heartbeat">',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'facilities'){
+        var icon = {
+            // url: '../../static/img/free-icon-exercise-2928160.png',
+            content: '<i class="fa text-primary mr-2 fa-shopping-bag">',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'education'){
+        var icon = {
+            // url: '../../static/img/free-icon-exercise-2928160.png',
+            content: '<i class="fa text-primary mr-2 fa-graduation-cap">',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      
+      }else if (cate == 'parenting'){
+        var icon = {
+            content: '<i class="fa fa-child text-primary mr-2">',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'starbucks_num'){
+        var icon = {
+            url: '../../static/img/free-icon-starbucks-5977591.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'mc_num'){
+        var icon = {
+            url: '../../static/img/free-icon-mcdonalds-732217.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'gym_num'){
+        var icon = {
+            url: '../../static/img/free-icon-exercise-2928160.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'golf_num'){
+        var icon = {
+            url: '../../static/img/free-icon-golf-5929982.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+
+      }else if (cate == 'safe_dlvr_num'){
+        var icon = {
+            url: '../../static/img/free-icon-courier-5310800.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'leisure_num'){
+        var icon = {
+            url: '../../static/img/free-icon-bowling-ball-3390655.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'park_num'){
+        var icon = {
+            url: '../../static/img/free-icon-park-2841090.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'ani_hspt_num'){
+        var icon = {
+            url: '../../static/img/free-icon-puppy-1959967.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'coliving_num'){
+        var icon = {
+            url: '../../static/img/free-icon-house-4820648.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'vegan_cnt'){
+        var icon = {
+            url: '../../static/img/free-icon-vegan-4773476.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'car_shr_num'){
+        var icon = {
+            url: '../../static/img/free-icon-toy-car-3094177.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }else if (cate == 'kids_num'){
+        var icon = {
+            url: '../../static/img/free-icon-baby-girl-3320134.png',
+            size: new naver.maps.Size(22, 35),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(11, 35)
+          };
+      }
+
     names.forEach((e, i) => {
+      // var icon = {
+      //   // url: '../../static/img/free-icon-exercise-2928160.png',
+      //   content: '<i class="fa text-primary mr-2 fa-car">',
+      //   size: new naver.maps.Size(22, 35),
+      //   origin: new naver.maps.Point(0, 0),
+      //   anchor: new naver.maps.Point(11, 35)
+      // };
 
       markers.push(new naver.maps.Marker({
         map: map,
-        position: new naver.maps.LatLng(lats[i], lons[i])
+        position: new naver.maps.LatLng(lats[i], lons[i]),
+        icon: icon
       }))
 
       infowindows.push(new naver.maps.InfoWindow({
@@ -190,7 +340,7 @@
     cate = ev.target.dataset.query;
     reqParam = { "dong_name": dongName, "gu_name": guName, "cate": cate }
     res = await getData('/facility_info', reqParam);
-    drawMarker(res.name, res.lat, res.lon)
+    drawMarker(res.name, res.lat, res.lon, res.category)
 
   }
 

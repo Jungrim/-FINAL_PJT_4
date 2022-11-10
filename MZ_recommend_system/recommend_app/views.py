@@ -13,7 +13,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import warnings
 import os
 
-from recommend_app.models import DongCnt, InfraAdmin
+from recommend_app.models import DongCnt, InfraAdmin, DongCoord
 from recommend_app.forms import WeightsForm
 import sys
 # sys.path.append("C:/workspaces/FINAL_PJT_4_DS&DE/MZ_recommend_system/recommend_app/ML_modeling")
@@ -110,10 +110,19 @@ def dongDetail(request):
     #     dictionary = {'category':cate, 'name':name_list, 'lat':lat_list, 'lon':lon_list}
 
     #     dict_list.append(dictionary)
+    dong_coord = []
+    dong_lat = DongCoord.objects.filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('lat', flat=True).all()
+    dong_lon = DongCoord.objects.filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('lon', flat=True).all()
+    for i in range(len(dong_lat)):
+            dong_coord.append(float(dong_lat[i]))
+            dong_coord.append(float(dong_lon[i]))
+    print(dong_coord)
+    print(type(dong_coord))
 
+    dong_coordinate = {'lat': dong_coord[0], 'lon': dong_coord[1]}
     data = {"dong_name" : dong_name, "gu_name" : gu_name}
 
-    return render(request, 'recommend_app/dong_detail.html',{'data': data} )
+    return render(request, 'recommend_app/dong_detail.html',{'data': data, 'dong_coordinate': dong_coordinate})
 
 
 def facility_info(request):
