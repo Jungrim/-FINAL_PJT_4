@@ -35,9 +35,9 @@
     $('#loadingImg').show();
     }
 </script>
-{% for dong_name in result.dong %}
+{% for gu,dong,code in result %}
 <form action="{% url 'recommend_app:dongDetail' %}" method="post"> {% csrf_token %}
-    <button onclick ="loading()" name="dong_name" value="{{dong_name}}">{{dong_name}}</button>
+    <button onclick ="loading()" name="dong_info" value="{{gu}} {{dong}} {{code}}">{{gu}} {{dong}}</button>
 </form>
 {% endfor %}
 
