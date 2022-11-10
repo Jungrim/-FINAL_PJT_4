@@ -5,10 +5,10 @@
 <style>
 #container {
     width: 800px;
-    height: 700px;
+    height: 600px;
     float: left;
     margin-left : 150px;
-    padding-top : 30px;
+    padding-top : 50px;
     fill: #000000;
 }
 
@@ -53,7 +53,7 @@
 <div id="container"></div>
 
 <form action="{% url 'recommend_app:similarRecommend' %}"  method="POST"> {% csrf_token %}
-    <button>추천 동네 찾기</button>
+     <button style="padding:5px" class="btn btn-outline-primary btn-block">동네 찾기 </button>
     <input type="hidden" name="dong_code" id="dong_code" value="">
 </form>
 {% endblock %}
