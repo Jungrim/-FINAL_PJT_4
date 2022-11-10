@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import json
 
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -18,7 +19,7 @@ import sys
 # sys.path.append("C:/workspaces/FINAL_PJT_4_DS&DE/MZ_recommend_system/recommend_app/ML_modeling")
 
 import recommend_app.ML_modeling.recommend_ML as RML
-
+import json
 
 def index(request):
     return render(request, 'recommend_app/index.html')
@@ -89,28 +90,52 @@ def dongDetail(request):
     # dong_info[1] : 동 이름
     # dong_info[2] : 동 코드
 
+    gu_name = dong_info[0]
     dong_name = dong_info[1]
-    print(dong_name)
 
     dict_list = []
     cate_list = ['transportation', 'safety', 'noise_vibration_num', 'leisure_num', 'gym_num', 'golf_num', 'park_num', 'facilities', 'medical', 'starbucks_num', 'mc_num', 'vegan_cnt', 'coliving_num', 'education', 'parenting', 'kids_num', 'ani_hspt_num', 'safe_dlvr_num', 'car_shr_num', 'mz_pop_cnt']
     
-    for cate in cate_list:
-        infra_name = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(dong__exact=dong_name).filter(cate__exact=cate).values_list('name', flat=True).order_by('-name').all()
-        infra_lat = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(dong__exact=dong_name).filter(cate__exact=cate).values_list('lat', flat=True).order_by('-name').all()
-        infra_lon = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(dong__exact=dong_name).filter(cate__exact=cate).values_list('lon', flat=True).order_by('-name').all()
-        name_list = []
-        lat_list = []
-        lon_list = []
-        for i in range(len(infra_name)):
-                name_list.append(infra_name[i])
-                lat_list.append(float(infra_lat[i]))
-                lon_list.append(float(infra_lon[i]))
-        dictionary = {'category':cate, 'name':name_list, 'lat':lat_list, 'lon':lon_list}
-        dict_list.append(dictionary)
-    print(dict_list)
+    # for cate in cate_list:
+    #     infra_name = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('name', flat=True).order_by('-name').all()
+    #     infra_lat = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('lat', flat=True).order_by('-name').all()
+    #     infra_lon = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('lon', flat=True).order_by('-name').all()
+    #     name_list = []
+    #     lat_list = []
+    #     lon_list = []
+    #     for i in range(len(infra_name)):
+    #             name_list.append(infra_name[i])
+    #             lat_list.append(float(infra_lat[i]))
+    #             lon_list.append(float(infra_lon[i]))
+    #     dictionary = {'category':cate, 'name':name_list, 'lat':lat_list, 'lon':lon_list}
 
-    return render(request, 'recommend_app/dong_detail.html', {'data' : dong_name, 'infra':dict_list})
+    #     dict_list.append(dictionary)
+
+    data = {"dong_name" : dong_name, "gu_name" : gu_name}
+
+    return render(request, 'recommend_app/dong_detail.html',{'data': data} )
+
+
+def facility_info(request):
+    dong_name = request.GET['dong_name']
+    gu_name = request.GET['gu_name']
+    cate = request.GET['cate']
+
+    infra_name = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('name', flat=True).order_by('-name').all()
+    infra_lat = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('lat', flat=True).order_by('-name').all()
+    infra_lon = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('lon', flat=True).order_by('-name').all()
+
+    name_list = []
+    lat_list = []
+    lon_list = []
+
+    for i in range(len(infra_name)):
+            name_list.append(infra_name[i])
+            lat_list.append(float(infra_lat[i]))
+            lon_list.append(float(infra_lon[i]))
+
+    dictionary = {'category':cate, 'name':name_list, 'lat':lat_list, 'lon':lon_list}
+    return JsonResponse(dictionary)
 
 def similarDong(request):
     return render(request, 'recommend_app/similar_dong.html')
