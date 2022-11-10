@@ -12,6 +12,7 @@
   <!-- CSS dependencies -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="../static/css/aquamarine.css" type="text/css">
+  <link rel="stylesheet" href="../static/css/style.css" type="text/css">
   <!-- Script: Make my navbar transparent when the document is scrolled to top -->
   <script src="js/navbar-ontop.js"></script>
   <!-- Script: Animated entrance -->
@@ -20,22 +21,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <style>
-  body {
-  margin-top: 150px;
-  /* 생략 */
+body{
+margin-top : 90px;
 }
+  #navbar3SupportedContent {
+  margin-left: -60px;
+  font-family: 'Pretendard-Regular';;
+  font-weight: bold;
+  font-size: 20px;
+  /* 생략 */
+  }
 </style>
 <body>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-    <img src="{% static 'img/logo_trans.png' %}" width="6%">
+    <a href="{% url 'recommend_app:index' %}"><img src="{% static 'img/logo_trans.png' %}" alt="동네어때" style="width:30%"></a>
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent" aria-controls="navbar3SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
       <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent">
         <ul class="navbar-nav">
+          <li class="nav-item mx-3">
+            <a class="nav-link text-light" href="{% url 'recommend_app:introduction' %}"><b class="text-center text-uppercase">소개</b></a>
+          </li>
           <li class="nav-item mx-3">
             <a class="nav-link text-light" href="{% url 'recommend_app:basicSelect' %}"><b class="text-center text-uppercase">동네추천</b></a>
           </li>
