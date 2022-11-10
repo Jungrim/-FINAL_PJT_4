@@ -106,8 +106,80 @@
     </div>
     <div class="py-5" style="">
       <div class="container">
+        <style>
+
+          .list-group-item {
+  user-select: none;
+}
+
+.list-group input[type="checkbox"] {
+  display: none;
+}
+
+.list-group input[type="checkbox"] + .list-group-item {
+  cursor: pointer;
+}
+
+.list-group input[type="checkbox"] + .list-group-item:before {
+  content: "\2713";
+  color: transparent;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.list-group input[type="checkbox"]:checked + .list-group-item {
+  background-color: #0275D8;
+  color: #FFF;
+}
+
+.list-group input[type="checkbox"]:checked + .list-group-item:before {
+  color: inherit;
+}
+
+.list-group input[type="radio"] {
+  display: none;
+}
+
+.list-group input[type="radio"] + .list-group-item {
+  cursor: pointer;
+}
+
+.list-group input[type="radio"] + .list-group-item:before {
+  content: "\2022";
+  color: transparent;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.list-group input[type="radio"]:checked + .list-group-item {
+  background-color: #0275D8;
+  color: #FFF;
+}
+
+.list-group input[type="radio"]:checked + .list-group-item:before {
+  color: inherit;
+}
+
+        </style>
         <div class="row">
           <div class="col-md-6" style="">
+
+            <div class="list-group">
+              <input type="checkbox" name="CheckBoxInputName" value="Value1" id="CheckBox1" />
+              <label class="list-group-item" for="CheckBox1">반려동물</label>
+
+              <input type="checkbox" name="CheckBoxInputName" value="Value2" id="CheckBox2" />
+              <label class="list-group-item" for="CheckBox2">카쉐어링</label>
+
+              <input type="checkbox" name="CheckBoxInputName" value="Value3" id="CheckBox3" />
+              <label class="list-group-item" for="CheckBox3">골프</label>
+
+              <input type="checkbox" name="CheckBoxInputName" value="Value4" id="CheckBox4" />
+              <label class="list-group-item" for="CheckBox4">헬스</label>
+
+            </div>
+
+
             <div class="card text-white bg-primary mb-3">
               <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;주변 이웃</div>
               <div class="card-body" style="">
@@ -136,7 +208,16 @@
             </div>
           </div>
           <div class="col-md-6" style="">
+              <a href="#" class="list-group-item list-group-item-action list-group-item-warning">실내레저</a>
+              <a href="#" class="list-group-item list-group-item-action list-group-item-info">공원</a>
+              <a href="#" class="list-group-item list-group-item-action list-group-item-light">스타벅스</a>
+              <a href="#" class="list-group-item list-group-item-action list-group-item-dark">맥도날드</a>
+              <a href="#" class="list-group-item list-group-item-action list-group-item-primary">반려동물</a>
+              <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">카쉐어링</a>
+
             <div class="card text-white bg-primary mb-3">
+
+
               <div class="card-header">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;라이프 스타일</div>
               <div class="card-body" style="">
                 <a class="btn btn-primary" href="#">동물병원</a>

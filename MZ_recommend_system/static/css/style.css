@@ -67,22 +67,7 @@
     font-weight: 400;
     font-style: normal;
 }
-.container{
-    font-family: 'Pretendard-Regular';
 
-
-}
-
-#선호도제목{
-    margin-top : 10% ;
-
-}
-
-#allfeatuers{
-    margin-top : -8% ;
-
-
-}
 
 
 .background_img {
@@ -156,5 +141,86 @@ margin-top : -10px;
 
 }
 
+/*추천페이지*/
+
+.container{
+    font-family: 'Pretendard-Regular';
 
 
+}
+
+#선호도제목{
+    margin-top : -1% ;
+
+}
+
+#allfeatuers{
+    margin-top : -8% ;
+
+
+
+}
+
+
+
+.rate {
+    float: left;
+    /*height: 100px;*/
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+
+
+.flex-container{
+    display: flex;
+    min-height: 100vh;
+    width: min(100%, 1000px);
+    margin-inline: auto;
+    padding-inline: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.ques1 {
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    top : 130px;
+    left : 200px;
+    width: 10000%;
+    height: 1000px;
+    position: relative;
+    text-align: center;
+    color: #353535;
+    font-size: 50px;
+
+}
