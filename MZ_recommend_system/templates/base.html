@@ -25,6 +25,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
 </head>
 <style>
 body{
@@ -53,7 +55,7 @@ margin-top : 90px;
             <a class="nav-link text-light" href="{% url 'recommend_app:basicSelect' %}"><b class="text-center text-uppercase">동네추천</b></a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="#menu"><b class="w-100 h-100">비슷한 동네 찾기</b></a>
+            <a class="nav-link" href="{% url 'recommend_app:similarDong' %}"><b class="w-100 h-100">비슷한 동네 찾기</b></a>
           </li>
           <li class="nav-item mx-2">
             <a class="nav-link" href="{% url 'recommend_app:categoryRanking' %}"><b>카테고리별 순위</b></a>

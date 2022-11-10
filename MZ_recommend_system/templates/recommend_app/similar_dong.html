@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<div class="py-5 text-center">
+    <div id="mapping" class="container">
+        <div id="radio">
+            <span class="title">지명표시</span>
+            <input type="radio" id="radio1" name="radio" value="on" checked><label for="radio1">On</label>
+            <input type="radio" id="radio2" name="radio" value="off"><label for="radio2">Off</label>
+        </div>
+    </div>
+    <script src="../../static/js/korea.js"></script>
+</div>
+{% endblock %}
