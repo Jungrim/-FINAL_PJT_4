@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
 
-<head>
-  <link rel="stylesheet" href="D:/DOWNLOAD/aquamarine.css">
-</head>
-
-<body>{% extends "base.html" %} {% block content %} {% load static %} <div class="py-5 text-center">
+<div class="py-5 text-center">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -14,28 +11,28 @@
       </div>
     </div>
   </div>
-  <div class="text-center py-4">
+  <div class="py-4 text-center">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 p-3" style="">
-          <div style="height:450px" class="card">
-            <div  class="card-body mb-1 p-4 pt-2"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="../../static/img/동네추천 이미지.jpeg" width="300">
+        <div class="col-lg-4 p-3">
+          <div class="card">
+            <div class="card-body p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="{% static 'img/동네추천 이미지.jpeg' %}" width="400">
               <h1>동네추천</h1>
               <p class="mb-0">선호하는 요소를 선택하면<br>취향에 맞게 동네를 추천합니다.</p>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 p-3 col-md-6" style="">
-          <div style="height:450px" class="card">
-            <div class="card-body p-4 pb-2"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="../../static/img/돋보기.jpg" width="150">
+        <div class="col-lg-4 p-3 col-md-6">
+          <div class="card">
+            <div class="card-body p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="{% static 'img/돋보기.jpg' %}" width="150">
               <h1>비슷한 동네 찾기</h1>
               <p class="mb-0">현재 살고 있는 동네와<br>비슷한 동네를 찾아줍니다.</p>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 p-3 col-md-1" style="">
-          <div style="height:450px" class="card">
-            <div class="card-body p-4 mb-3"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="../../static/img/트로피.jpg">
+        <div class="col-lg-4 p-3 col-md-6">
+          <div class="card">
+            <div class="card-body p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="{% static 'img/트로피.jpg' %}" width="300">
               <h1>카테고리<br>순위</h1>
               <p class="mb-0">요소를 카테고리별로 분류해서<br>각각의 순위를 보여줍니다.</p>
             </div>
@@ -43,7 +40,6 @@
         </div>
       </div>
     </div>
-  </div> {% endblock %} <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
-</body>
+  </div>
 
-</html>
+  {% endblock %}
