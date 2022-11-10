@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="nav nav-pills">
-          <li class="nav-item"> <button onclick="ranking_func('transportation')" class="active nav-link infra"
-              data-toggle="pill" data-target="#tabone" data-query="transportation">교통</button> </li>
+          <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabone"
+              data-query="transportation">교통</a> </li>
           <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabtwo"
               data-query="safety">치안</a> </li>
           <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabthree"
@@ -88,6 +88,8 @@
 <script>
 
   var HOME_PATH = window.HOME_PATH || '.';
+  var markers = [];
+  var infowindows = [];
 
   map = new naver.maps.Map('map', {
     center: new naver.maps.LatLng(36.31175, 127.3754709),
@@ -145,9 +147,8 @@
 
   function drawMarker(names, lats, lons) {
 
-    var hanbyeolhouse = new naver.maps.LatLng(36.32611, 127.41263);
-    var markers = [];
-    var infowindows = [];
+    markers = [];
+    infowindows = [];
 
     names.forEach((e, i) => {
 
@@ -178,7 +179,13 @@
 
   async function callbackInfra(ev) {
     ev.preventDefault();
-    //dong_name, gu_name, cate
+    for (let i = 0; i < markers.length; i++) {
+      markers[i].setMap(null)
+      if (infowindows[i].getMap()) {
+          infowindows[i].close();
+        } else {
+        }
+    }
     console.dir(ev.target.dataset)
     cate = ev.target.dataset.query;
     reqParam = { "dong_name": dongName, "gu_name": guName, "cate": cate }
