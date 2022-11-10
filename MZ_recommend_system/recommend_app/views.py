@@ -43,8 +43,10 @@ def basicSelect(request):
         user_group, user_include_df = RML.user_clustering(basic_df, df, user_scaled, first_pca, first_kmeans)
         result_dong_list = RML.similarity(user_df, df.loc[user_include_df.index.values], "user", 3)
         recommend_dong_list = user_include_df.loc[result_dong_list]['DONG'].values
-        result = {"dong": recommend_dong_list, "weight_user": user}
-
+        recommend_gu_list = user_include_df.loc[result_dong_list]['GU'].values
+        recommend_code_list = user_include_df.loc[result_dong_list].index.values
+        # result = {"dong": recommend_dong_list, "gu" : recommend_gu_list, "code" : recommend_code_list, "weight_user": user}
+        result = zip(recommend_gu_list, recommend_dong_list, recommend_code_list)
         return render(request, 'recommend_app/recommend_result.html', {'result': result})
     else:
         form = WeightsForm()
@@ -80,9 +82,14 @@ def introduction(request):
     return render(request, 'recommend_app/introduction.html')
 
 def dongDetail(request):
-    data = {"dong_name" : request.POST['dong_name']}
-    print(data)
-    dong_name = request.POST['dong_name']
+    data = request.POST['dong_info']
+    dong_info = data.split(" ")
+
+    # dong_info[0] : 구 이름
+    # dong_info[1] : 동 이름
+    # dong_info[2] : 동 코드
+
+    dong_name = dong_info[1]
     print(dong_name)
 
     dict_list = []
@@ -103,4 +110,4 @@ def dongDetail(request):
         dict_list.append(dictionary)
     print(dict_list)
 
-    return render(request, 'recommend_app/dong_detail.html', {'data' : data, 'infra':dict_list})
+    return render(request, 'recommend_app/dong_detail.html', {'data' : dong_name, 'infra':dict_list})
