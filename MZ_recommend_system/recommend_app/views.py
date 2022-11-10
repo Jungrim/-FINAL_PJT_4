@@ -120,7 +120,7 @@ def facility_info(request):
     dong_name = request.GET['dong_name']
     gu_name = request.GET['gu_name']
     cate = request.GET['cate']
-    
+
     infra_name = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('name', flat=True).order_by('-name').all()
     infra_lat = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('lat', flat=True).order_by('-name').all()
     infra_lon = InfraAdmin.objects.filter(std_day__exact='2022-10-27').filter(cate__exact=cate).filter(gu__exact=gu_name).filter(dong__exact=dong_name).values_list('lon', flat=True).order_by('-name').all()
@@ -137,9 +137,5 @@ def facility_info(request):
     dictionary = {'category':cate, 'name':name_list, 'lat':lat_list, 'lon':lon_list}
     return JsonResponse(dictionary)
 
-
-
-
-
-
-
+def similarDong(request):
+    return render(request, 'recommend_app/similar_dong.html')
