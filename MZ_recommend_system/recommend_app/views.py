@@ -90,7 +90,7 @@ def dongDetail(request):
     # dong_info[2] : 동 코드
 
     dong_name = dong_info[1]
-
+    print(dong_name)
 
     dict_list = []
     cate_list = ['transportation', 'safety', 'noise_vibration_num', 'leisure_num', 'gym_num', 'golf_num', 'park_num', 'facilities', 'medical', 'starbucks_num', 'mc_num', 'vegan_cnt', 'coliving_num', 'education', 'parenting', 'kids_num', 'ani_hspt_num', 'safe_dlvr_num', 'car_shr_num', 'mz_pop_cnt']
