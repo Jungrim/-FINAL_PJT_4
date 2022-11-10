@@ -42,16 +42,16 @@ margin-top : 90px;
 <body>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-    <a href="{% url 'recommend_app:index' %}"><img src="{% static 'img/logo_trans.png' %}" alt="동네어때" style="width:30%"></a>
+    <a href="{% url 'recommend_app:index' %}"><img src="{% static 'img/동네 어때.png' %}" alt="동네어때" style="width:30%"></a>
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent" aria-controls="navbar3SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
       <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item mx-3">
-            <a class="nav-link text-light" href="{% url 'recommend_app:introduction' %}"><b class="text-center text-uppercase">소개</b></a>
+            <a class="nav-link" href="{% url 'recommend_app:introduction' %}"><b class="text-center text-uppercase">소개</b></a>
           </li>
           <li class="nav-item mx-3">
-            <a class="nav-link text-light" href="{% url 'recommend_app:basicSelect' %}"><b class="text-center text-uppercase">동네추천</b></a>
+            <a class="nav-link" href="{% url 'recommend_app:basicSelect' %}"><b class="text-center text-uppercase">동네추천</b></a>
           </li>
           <li class="nav-item mx-2">
             <a class="nav-link" href="{% url 'recommend_app:similarDong' %}"><b class="w-100 h-100">비슷한 동네 찾기</b></a>
