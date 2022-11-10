@@ -1,9 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
 
-<head></head>
-
-<body>{% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- PAGE settings -->
@@ -19,15 +18,18 @@
   <script src="js/navbar-ontop.js"></script>
   <!-- Script: Animated entrance -->
   <script src="js/animate-in.js"></script>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Nanum+Gothic+Coding:wght@400;700&amp;family=Nanum+Gothic:wght@400;700;800&amp;display=swap" rel="stylesheet">
-  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-  <style> body{
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+</head>
+<style>
+body{
 margin-top : 90px;
 }
   #navbar3SupportedContent {
@@ -38,6 +40,8 @@ margin-top : 90px;
   /* 생략 */
   }
 </style>
+<body>
+
   <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
     <a href="{% url 'recommend_app:index' %}"><img src="{% static 'img/logo_trans.png' %}" alt="동네어때" style="width:30%"></a>
     <div class="container">
@@ -56,14 +60,19 @@ margin-top : 90px;
           <li class="nav-item mx-2">
             <a class="nav-link" href="{% url 'recommend_app:categoryRanking' %}"><b>카테고리별 순위</b></a>
           </li>
-        </ul> {% if user.is_authenticated %} <a class="btn navbar-btn btn-secondary mx-2" href="{% url 'accounts:logout' %}"><b>로그아웃</b></a><b class="text-warning">{{user.username}}</b><a> 님 반갑습니다</a> {% else %} <a class="btn navbar-btn btn-secondary mx-2" href="{% url 'accounts:login' %}"><b>로그인</b></a>
-        <span>또는 <a href="{% url 'accounts:signup' %}">계정을 만드세요.</a></span> {% endif %}
+        </ul>
+        {% if user.is_authenticated %}
+        <a class="btn navbar-btn btn-secondary mx-2" href="{% url 'accounts:logout' %}"><b>로그아웃</b></a><b class="text-warning">{{user.username}}</b><a> 님 반갑습니다</a>
+        {% else %}
+        <a class="btn navbar-btn btn-secondary mx-2" href="{% url 'accounts:login' %}"><b>로그인</b></a>
+          <span>또는 <a href="{% url 'accounts:signup' %}">계정을 만드세요.</a></span>
+        {% endif %}
       </div>
     </div>
   </nav>
-  <!-- 기본 템플릿안에 삽입될 내용 시작 --> {% block content %} {% endblock %}
-  <!-- 기본 템플릿안에 삽입될 내용 끝 -->
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+<!-- 기본 템플릿안에 삽입될 내용 시작 -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿안에 삽입될 내용 끝 -->
 </body>
-
 </html>
