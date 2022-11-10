@@ -114,3 +114,19 @@ def dongDetail(request):
 
 def similarDong(request):
     return render(request, 'recommend_app/similar_dong.html')
+
+
+def similarRecommend(request):
+    dong_code = request.POST['dong_code']
+    df = RML.preprocessing_df()
+    basic_df, first_kmeans, first_pca = RML.first_clustering(df)
+
+    dong_data = df.loc[[int(dong_code)]]
+
+    result_dong_list = RML.similarity(dong_data, df, int(dong_code), 4)[1:]
+    recommend_dong_list = basic_df.loc[result_dong_list]['DONG'].values
+    recommend_gu_list = basic_df.loc[result_dong_list]['GU'].values
+    recommend_code_list = basic_df.loc[result_dong_list].index.values
+    # # result = {"dong": recommend_dong_list, "gu" : recommend_gu_list, "code" : recommend_code_list, "weight_user": user}
+    result = zip(recommend_gu_list, recommend_dong_list, recommend_code_list)
+    return render(request, 'recommend_app/recommend_result.html', {'result': result})

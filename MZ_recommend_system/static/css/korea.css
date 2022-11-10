@@ -1,21 +1,24 @@
-{% extends "base.html" %}
-{% block content %}
-{% load static %}
+@charset "UTF-8";
+.container {
+	position: relative;
+	margin: 50px auto 30px;
+	width: 700px;
+	min-height: 700px;
+}
 
-<style>
 #container {
-    width: 800px;
-    height: 700px;
+    width: 700px;
+    min-height: 700px;
     float: left;
-    margin-left : 150px;
-    padding-top : 30px;
-    fill: #000000;
+    margin: 15px 35px;
+    fill: #333333;
 }
 
 .background {
     fill: #67cccc;
     pointer-events: all;
 }
+
 #map {
 	border: 1px solid #ddd;
 }
@@ -47,13 +50,3 @@
     font-size: 7px;
     fill: #290909;
 }
-
-</style>
-
-<div id="container"></div>
-
-<form action="{% url 'recommend_app:similarRecommend' %}"  method="POST"> {% csrf_token %}
-    <button>추천 동네 찾기</button>
-    <input type="hidden" name="dong_code" id="dong_code" value="">
-</form>
-{% endblock %}
