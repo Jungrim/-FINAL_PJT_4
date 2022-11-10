@@ -10,4 +10,5 @@ urlpatterns = [
     path('categoryRanking',views.categoryRanking, name='categoryRanking'),
     path('introduction',views.introduction, name='introduction'),
     path('dongDetail',views.dongDetail, name='dongDetail'),
+    path('similarDong',views.similarDong, name='similarDong'),
 ]

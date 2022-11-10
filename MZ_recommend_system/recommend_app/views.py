@@ -111,3 +111,6 @@ def dongDetail(request):
     print(dict_list)
 
     return render(request, 'recommend_app/dong_detail.html', {'data' : dong_name, 'infra':dict_list})
+
+def similarDong(request):
+    return render(request, 'recommend_app/similar_dong.html')
