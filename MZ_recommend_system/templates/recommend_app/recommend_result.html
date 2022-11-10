@@ -2,6 +2,9 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="../static/css/style.css" type="text/css">
+<link rel="stylesheet" href="../static/css/aquamarine.scss" type="text/css">
+
 
 <script>
     function loadingProcess() {
@@ -41,12 +44,55 @@ console.log("test2");
     $('#mask, #loadingImg').remove();
 }
 </script>
+<div class="py-5">
+    <div class="container" >
+        <h1 class="text-center" >추천하는 동은 </h1>
 
-{% for gu,dong,code in result %}
-<form action="{% url 'recommend_app:dongDetail' %}" method="post"> {% csrf_token %}
-    <button onclick ="loadingProcess()" name="dong_info" value="{{gu}} {{dong}} {{code}}">{{gu}} {{dong}}</button>
-</form>
-{% endfor %}
+    </div>
+    <div class="container">
+        <div class="row">
 
+        {% for gu,dong,code in result %}
+            <div class="col-md-4">
+                <form action="{% url 'recommend_app:dongDetail' %}" method="post">
+                {% csrf_token %}
+                <button onclick ="loadingProcess()" class="resulttobutton btn btn-primary mx-1" name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
+                    <img src="../../static/img/homebutton.png" width="120">{{gu}} {{dong}}
+                </button>
+                </form>
+            </div>
+        {% endfor %}
+
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+
+            </div>
+
+        </div>
+    </div>
+
+<style>
+    .container{
+        width:1280px;
+    }
+    .resulttobutton{
+        font-family: 'Pretendard-Regular';
+        font-weight: 400;
+        font-size : 35px;
+        color : primary;
+        margin-bottom: 100px;
+
+    }
+
+    h1{
+        margin-top : 100px;
+    }
+    #3dong{
+
+    }
+
+</style>
 
 {% endblock %}
