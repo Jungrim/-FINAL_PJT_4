@@ -63,39 +63,51 @@ console.log("test2");
 		}
 
 </style>
-<div class="py-5">
-    <div class="container" >
-        <h1 class="text-center" >추천하는 동은 </h1>
+<div class="py-5 p-1 " id="allresultsection">
+    <div class="container d-flex justify-content-center" id="resultcontainer" >
+        <h1 class="text-center" >추천하는 동네는... </h1>
 
     </div>
 
 
-        <div class="shopping-process text-center" style="margin-bottom : 50px">
 
-        <h2 class="text-center"> {{cluster_data.title}}</h2>
-				<section class="tiles">
-                {% for tag in cluster_data.tags %}
-                    <article  style="background-color: #7ecaf6;">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="generic.html" style="color:white;">
-										<h2>{{tag}}</h2>
-									</a>
-                    </article>
-                 {% endfor %}
-                </section>
+    <div class="container  d-flex justify-content-center " id="titlecontainer" >
+        <h2 class="text-center" id="clustertitle"> {{cluster_data.title}} <span class="lastword">입니다.</span></h2>
     </div>
+
+
+
+
+    <div class="container d-flex justify-content-center " id="tagcontainer" >
+        <section class="tiles ">
+        {% for tag in cluster_data.tags %}
+<!--            <article  style="background-color: #7ecaf6;">-->
+<!--&lt;!&ndash;                            <span class="image">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img src="images/pic02.jpg" alt="" />&ndash;&gt;-->
+<!--&lt;!&ndash;                            </span>&ndash;&gt;-->
+            {{tag}}&nbsp;
+
+
+<!--            </article>-->
+         {% endfor %}
+        </section>
+    </div>
+
+
+
+
+
+
 
     <div class="container">
-        <div class="row">
+        <div class="row ">
 
         {% for gu,dong,code in result %}
-            <div class="col-md-4">
+            <div class="col-md-4" id="resultdong">
                 <form action="{% url 'recommend_app:dongDetail' %}" method="post">
                 {% csrf_token %}
-                <button onclick ="loadingProcess()" class="resulttobutton btn btn-primary mx-1" name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
-                    <img src="../../static/img/homebutton.png" width="120">{{gu}} {{dong}}
+                <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
+                    <img src="../../static/img/home.gif" width="60">{{gu}} {{dong}}
                 </button>
                 </form>
             </div>
@@ -112,24 +124,67 @@ console.log("test2");
     </div>
 
 <style>
-    .container{
+
+
+    #resultcontainer{
         width:1280px;
+        height:100px;
+        margin-top:100px;
+        font-family: 'Pretendard-Regular';
+
     }
     .resulttobutton{
         font-family: 'Pretendard-Regular';
         font-weight: 400;
-        font-size : 35px;
+        font-size : 15px;
         color : primary;
         margin-bottom: 100px;
 
     }
 
     h1{
-        margin-top : 100px;
-        margin-bottom : 100px;
-    }
-    #3dong{
+        font-family: 'Pretendard-Regular';
 
+        font-size : 25px;
+        font-weight : 400;
+
+    }
+
+    .lastword{
+        font-weight : 400;
+        color:#151515;
+    }
+
+
+
+
+    #clustertitle{
+        font-family: 'Pretendard-Regular';
+        font-size : 20px;
+        font-weight : 600;
+        color : #12bbad;
+        margin-left : -1%;
+        margin-top:-60px;
+        margin-bottom : 45px;
+
+
+
+    }
+
+    #tagcontainer{
+        font-family: 'Pretendard-Regular';
+        font-size : 15px;
+        font-weight : 600;
+        color : #151515;
+
+        margin-left : 21%;
+
+    }
+
+    #resultdong{
+
+        font-family: 'Pretendard-Regular';
+        font-size:60px;
     }
 
 </style>
