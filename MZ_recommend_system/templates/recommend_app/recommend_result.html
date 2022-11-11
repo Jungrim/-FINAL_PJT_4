@@ -45,30 +45,30 @@ console.log("test2");
 }
 </script>
 <div class="py-5">
-    <div class="container" >
+    <div class="container-sm" id="textbox" >
         <h1 class="text-center" >추천하는 동은 </h1>
 
     </div>
-    <div class="container">
+    <div class="container-md">
         <div class="row">
+            <div class="col-md-0"></div>
+
+
+
 
         {% for gu,dong,code in result %}
-            <div class="col-md-4">
+            <div class="col-md-4" id="resultbuttoncol">
                 <form action="{% url 'recommend_app:dongDetail' %}" method="post">
                 {% csrf_token %}
-                <button onclick ="loadingProcess()" class="resulttobutton btn btn-primary mx-1" name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
-                    <img src="../../static/img/homebutton.png" width="120">{{gu}} {{dong}}
+                <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
+                    <img src="../../static/img/home.gif" class="mr-2" id="homeimg" width="120">{{gu}} {{dong}}
                 </button>
                 </form>
             </div>
         {% endfor %}
 
-            <div class="col-md-6">
 
-            </div>
-            <div class="col-md-6">
-
-            </div>
+            <div class="col-md-0"></div>
 
         </div>
     </div>
@@ -80,19 +80,35 @@ console.log("test2");
     .resulttobutton{
         font-family: 'Pretendard-Regular';
         font-weight: 400;
-        font-size : 35px;
+        font-size : 40px;
         color : primary;
         margin-bottom: 100px;
 
+    }
+    #textbox{
+
+        padding-bottom :0px;
     }
 
     h1{
         margin-top : 100px;
         margin-bottom : 100px;
     }
-    #3dong{
+
+    #homeimg{
+        margin-top:-30px;
+        margin-left:200px;
+        margn-right:1000px;
+
 
     }
+    #resultbuttoncol{
+        width :200%;
+        margin-right:-60px;
+
+
+    }
+
 
 </style>
 

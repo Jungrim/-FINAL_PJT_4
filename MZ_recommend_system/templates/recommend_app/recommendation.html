@@ -41,7 +41,15 @@ display: none;
 color: inherit;
 }
 
+img{
 
+  margin-left : -30px;
+}
+
+#star5{
+  font-size : 25px;
+  font-weight : 600;
+}
 
 
 
@@ -64,7 +72,7 @@ color: inherit;
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush" id="star5">
               <li class="list-group-item"><i class="fa text-primary mr-2 fa-car"></i>교통</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-primary px-4 active">
@@ -117,8 +125,8 @@ color: inherit;
                 <label class="btn btn-primary px-4">
                   <input type="radio" name="facilities" id="facilities" value="5"> 5점 </label>
               </div>
-              <li class="list-group-item"><i class="fa text-primary mr-2 fa-graduation-cap"></i>&nbsp;교육</li>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <li class="list-group-item"><i class="fa text-primary mr-1 fa-graduation-cap"></i>&nbsp;교육</li>
+              <div class="btn-group btn-group-toggle " data-toggle="buttons">
                 <label class="btn btn-primary px-4 active">
                   <input type="radio" name="education" id="education" value="1" checked> 1점 </label>
                 <label class="btn btn-primary px-4">
@@ -130,9 +138,7 @@ color: inherit;
                 <label class="btn btn-primary px-4">
                   <input type="radio" name="education" id="education" value="5"> 5점 </label>
               </div>
-            </ul>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><i class="fa fa-child text-primary mr-2"></i>육아</li>
+              <li class="list-group-item"><i class="fa fa-child text-primary mr-3 fa-child-cap"></i>육아</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-primary px-4 active">
                   <input type="radio" name="parenting" id="parenting" value="1" checked> 1점 </label>
@@ -156,7 +162,7 @@ color: inherit;
         <div class="row">
 
           <div class="col-md-6" style="">
-            <div class="list-group">
+            <div class="list-group text-center">
               <input type="hidden" name="noise_vibration_num" value=0>
               <input type="hidden" name="mz_pop_cnt" value=0>
               <input type="hidden" name="starbucks_num" value=0>
@@ -166,7 +172,6 @@ color: inherit;
               <input type="hidden" name="safe_dlvr_num" value=0>
               
               <input type="checkbox" name="noise_vibration_num" value=1 id="noise_vibration_num">
-              <label class="list-group-item" for="noise_vibration_num"><img src="../../static/img/free-icon-silent-4340428.png"> 조용한 동네</label>
               <input type="checkbox" name="mz_pop_cnt" value=1 id="mz_pop_cnt">
               <label class="list-group-item" for="mz_pop_cnt"><img src="../../static/img/free-icon-girl-4440876.png"> 젊은 동네</label>
               <input type="checkbox" name="starbucks_num" value=1 id="starbucks_num">
@@ -183,7 +188,7 @@ color: inherit;
             </div>
           </div>
           <div class="col-md-6" style="">
-            <div class="list-group">
+            <div class="list-group text-center">
 
               <input type="hidden" name="leisure_num" value=0>
               <input type="hidden" name="park_num" value=0>
