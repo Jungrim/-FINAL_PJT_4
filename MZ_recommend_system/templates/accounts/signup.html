@@ -1,81 +1,98 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <form class="form-horizontal" action="#" method="POST">
-          {% csrf_token %}
-          {% include "form_errors.html" %}
-          <fieldset>
-            <div id="legend">
-              <legend class="">Register</legend>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="username">Username</label>
-              <div class="controls">
-                <input type="text" id="username" name="username" placeholder="" class="form-control input-lg" value="{{form.username.value|default_if_none:''}}">
-                <p class="help-block">Username can contain any letters or numbers, without spaces</p>
-              </div>
-            </div>
-            <label for="age">Age</label>
-            <select class="form-control" id="age" name="age">
-              <option>연령대를 선택하세요</option>
-              <option value="A20">20 ~ 24 세</option>
-              <option value="B20">25 ~ 29 세</option>
-              <option value="A30">30 ~ 34 세</option>
-              <option value="B30">35 ~ 39 세</option>
-              <option value="A40">40 대 이상</option>
-            </select>
+<style>
+  #container {
+    width: 800px;
+    height: 600px;
+    float: center;
+    margin-left : 150px;
+    padding-top : 50px;
+    fill: #000000;
+  }
+  .register-container {
+    width: 70%;
+    height: 50%;
+  }
+</style>
 
-            <div class="form-group">
-              <div class="col-sm-7 col-md-7">
-                <div class="input-group">
-                  <div id="radioBtn" class="btn-group">
-                  </div>
-                  <input type="hidden" name="happy" id="happy">
+  <div class="container" id="container">
+    <div class="row">
+      <div class="col-md-6 ml-auto d-flex" style="position:absolute; top:150px;"><img src="{% static 'img/동네 어때(맞춤형 동네추천 서비스).png' %}" ></div>
+      <div class="col-md-6" style="position:absolute; top:150px;">
+        <div class="register-container" style="position:relative; left:700px;">
+          <form class="form-horizontal" action="#" method="POST">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <fieldset>
+              <div id="legend">
+                <legend class="">Register</legend>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="username">Username</label>
+                <div class="controls">
+                  <input type="text" id="username" name="username" placeholder="" class="form-control input-lg" value="{{form.username.value|default_if_none:''}}">
+                  <p class="help-block">Username can contain any letters or numbers, without spaces</p>
                 </div>
               </div>
-            </div>
-            <!-- <div class="control-group">
-              <label class="control-label" for="gender" style="">Gender</label><br>
-              <a class="btn btn-primary btn-sm notactive px-4" data-toggle="happy" data-title="Y">남</a><a class="btn btn-primary btn-sm notActive px-4" data-toggle="happy" data-title="N">여</a>
-            </div> -->
-            <div class="control-group">
-              <label class="control-label" for="gender" style="">Gender</label><br>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary px-4">
-                  <input type="radio" name="gender" id="gender" value="M"> Male </label>
-                <label class="btn btn-primary px-4">
-                  <input type="radio" name="gender" id="gender" value="F"> Female </label>
+              <label for="age">Age</label>
+              <select class="form-control" id="age" name="age">
+                <option>연령대를 선택하세요</option>
+                <option value="A20">20 ~ 24 세</option>
+                <option value="B20">25 ~ 29 세</option>
+                <option value="A30">30 ~ 34 세</option>
+                <option value="B30">35 ~ 39 세</option>
+                <option value="A40">40 대 이상</option>
+              </select>
+  
+              <div class="form-group">
+                <div class="col-sm-7 col-md-7">
+                  <div class="input-group">
+                    <div id="radioBtn" class="btn-group">
+                    </div>
+                    <input type="hidden" name="happy" id="happy">
+                  </div>
+                </div>
               </div>
-            </div>
-            <br>
-            <div class="control-group">
-              <label class="control-label" for="password">Password</label>
-              <div class="controls">
-                <input type="password" id="password" name="password1" placeholder="" class="form-control input-lg" value="{{form.password1.value|default_if_none:''}}">
-                <p class="help-block">Password should be at least 8 characters</p>
+              <!-- <div class="control-group">
+                <label class="control-label" for="gender" style="">Gender</label><br>
+                <a class="btn btn-primary btn-sm notactive px-4" data-toggle="happy" data-title="Y">남</a><a class="btn btn-primary btn-sm notActive px-4" data-toggle="happy" data-title="N">여</a>
+              </div> -->
+              <div class="control-group">
+                <label class="control-label" for="gender" style="">Gender</label><br>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary px-4">
+                    <input type="radio" name="gender" id="gender" value="M"> Male </label>
+                  <label class="btn btn-primary px-4">
+                    <input type="radio" name="gender" id="gender" value="F"> Female </label>
+                </div>
               </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="password2">Password (Confirm)</label>
-              <div class="controls">
-                <input type="password" id="password2" name="password2" placeholder="" class="form-control input-lg" value="{{form.password2.value|default_if_none:''}}">
-                <p class="help-block">Please confirm password</p>
+              <br>
+              <div class="control-group">
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                  <input type="password" id="password" name="password1" placeholder="" class="form-control input-lg" value="{{form.password1.value|default_if_none:''}}">
+                  <p class="help-block">Password should be at least 8 characters</p>
+                </div>
               </div>
-            </div>
-            <div class="control-group">
-              <!-- Button -->
-              <div class="controls">
-                <button type='submit' class="btn btn-success px-3">Register</button>
+              <div class="control-group">
+                <label class="control-label" for="password2">Password (Confirm)</label>
+                <div class="controls">
+                  <input type="password" id="password2" name="password2" placeholder="" class="form-control input-lg" value="{{form.password2.value|default_if_none:''}}">
+                  <p class="help-block">Please confirm password</p>
+                </div>
               </div>
-            </div>
-          </fieldset>
-          <input type="hidden" name="ageParam" id="ageParam" value="a30">
-        </form>
+              <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                  <button type='submit' class="btn btn-success px-3">Register</button>
+                </div>
+              </div>
+            </fieldset>
+            <input type="hidden" name="ageParam" id="ageParam" value="a30">
+          </form>
+        </div>
       </div>
-      <div class="col-md-6 d-flex flex-row justify-content-center"><img class="img-fluid d-block justify-content-center flex-row d-flex" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
     </div>
   </div>
   <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
