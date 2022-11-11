@@ -4,20 +4,65 @@
 
 
 
-<div class="pt-5">
-  <div class="container">
-    <div class="row">
-      <div class="px-md-5 col-md-12">
-        <h1 class="text-primary mb-4"> <b>{{data.dong_name}}</b></h1>
+<div class="pt-5 justify-content-center">
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="px-md-5 col-md-12">-->
+<!--        <h1 class="text-primary mb-4"> <b>{{data.dong_name}}</b></h1>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div class="container mt-5">
+    <div class="row " id="textbox">
+      <div class="col-md">
+        <span class="text-dark" id="yourdong">당신의 동네인</span>
+        <span class="text-primary " id="dongnamedetail"><br> &nbsp;{{data.dong_name}}</br></span>
+      </div>
+      <div class="col-md">
+        <div id="map" style=""></div>
       </div>
     </div>
   </div>
 </div>
+<style>
+  #textbox{
+
+    margin-left : 30%;
+
+  }
+  #map{
+    margin-left:-25%;
+    padding-left:10%;
+    margin-right:50%;
+    width:100%;
+    height:35vh;
+  }
+
+  #yourdong{
+    margin-top:100%;
+    font-size : 30px;
+    font-weight : 400;
+    margin-left : -5%
+
+
+  }
+  #dongnamedetail{
+    font-size : 60px;
+    font-weight : 400;
+    margin-left : 5%
+
+  }
+  #featureline{
+    margin-left : 15%;
+  }
+
+
+</style>
 <div class="py-5">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <ul class="nav nav-pills">
+    <div class="row ml-2">
+      <div class="col-md-9 border border-primary p-1" id="featureline">
+        <ul class="nav nav-pills m-auto font-weight-bold " id="navbox" style="margin-left: 50px;">
           <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabone"
               data-query="transportation">교통</a> </li>
           <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabtwo"
@@ -64,15 +109,7 @@
   </div>
 </div>
 <div class="py-5">
-  <div class="container">
-    <div class="row">
 
-
-      <div id="map" style="width:100%;height:100vh;margin:0 auto;"></div>
-
-
-    </div>
-  </div>
 </div>
 
 

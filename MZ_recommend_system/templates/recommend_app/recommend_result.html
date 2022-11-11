@@ -63,11 +63,13 @@ console.log("test2");
 		}
 
 </style>
-<div class="py-5 p-1 " id="allresultsection">
+<div class="py-5 p-1 border-right border-left border-dark border-3 " id="allresultsection">
+<!--    <div class="container  border-left border-right border-dark">-->
     <div class="container d-flex justify-content-center" id="resultcontainer" >
         <h1 class="text-center" >추천하는 동네는... </h1>
 
     </div>
+
 
 
 
@@ -78,8 +80,8 @@ console.log("test2");
 
 
 
-    <div class="container d-flex justify-content-center " id="tagcontainer" >
-        <section class="tiles ">
+    <div class="container  d-flex justify-content-center m-auto " id="tagcontainer" >
+        <section class="tiles">
         {% for tag in cluster_data.tags %}
 <!--            <article  style="background-color: #7ecaf6;">-->
 <!--&lt;!&ndash;                            <span class="image">&ndash;&gt;-->
@@ -100,7 +102,7 @@ console.log("test2");
 
 
     <div class="container">
-        <div class="row ">
+        <div class="row" >
 
         {% for gu,dong,code in result %}
             <div class="col-md-4" id="resultdong">
@@ -124,7 +126,10 @@ console.log("test2");
     </div>
 
 <style>
+    #1dong{
+        font-size:100px;
 
+    }
 
     #resultcontainer{
         width:1280px;
@@ -167,17 +172,19 @@ console.log("test2");
         margin-top:-60px;
         margin-bottom : 45px;
 
-
+    }
+    .tiles{
+        margin-left:-2%;
 
     }
-
     #tagcontainer{
         font-family: 'Pretendard-Regular';
         font-size : 15px;
         font-weight : 600;
         color : #151515;
 
-        margin-left : 21%;
+        align-content: center;
+
 
     }
 
