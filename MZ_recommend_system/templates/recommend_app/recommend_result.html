@@ -44,11 +44,49 @@ console.log("test2");
     $('#mask, #loadingImg').remove();
 }
 </script>
+
+<style>
+    	.tiles {
+
+		display: flex;
+
+		flex-wrap: wrap;
+		postiion: relative;
+		margin: -2.5em 0 0 -2.5em;
+	}
+.tiles article {
+
+			transition: transform 0.5s ease, opacity 0.5s ease;
+			position: relative;
+			width: calc(33.33333% - 2.5em);
+			margin: 2.5em 0 0 2.5em;
+		}
+
+</style>
 <div class="py-5">
     <div class="container" >
         <h1 class="text-center" >추천하는 동은 </h1>
 
     </div>
+
+
+        <div class="shopping-process text-center" style="margin-bottom : 50px">
+
+        <h2 class="text-center"> {{cluster_data.title}}</h2>
+				<section class="tiles">
+                {% for tag in cluster_data.tags %}
+                    <article  style="background-color: #7ecaf6;">
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<a href="generic.html" style="color:white;">
+										<h2>{{tag}}</h2>
+									</a>
+                    </article>
+                 {% endfor %}
+                </section>
+    </div>
+
     <div class="container">
         <div class="row">
 
