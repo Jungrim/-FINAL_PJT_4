@@ -79,7 +79,7 @@ hr {
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 0.75rem; }
+  margin-bottom: 0.1rem; }
 
 p {
   margin-top: 0;
@@ -304,16 +304,6 @@ template {
 [hidden] {
   display: none !important; }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 0.75rem;
-  font-family: Roboto;
-  font-weight: 200;
-  line-height: 1.2;
-  color: inherit; }
-
-h1, .h1 {
-  font-size: 2.5rem; }
 
 h2, .h2 {
   font-size: 2rem; }
@@ -5428,7 +5418,7 @@ button.bg-dark:focus {
 
 .pt-5,
 .py-5 {
-  padding-top: 4.5rem !important; }
+  padding-top: 1.5rem !important; }
 
 .pr-5,
 .px-5 {
@@ -5436,7 +5426,7 @@ button.bg-dark:focus {
 
 .pb-5,
 .py-5 {
-  padding-bottom: 4.5rem !important; }
+  padding-bottom: 1.5rem !important; }
 
 .pl-5,
 .px-5 {

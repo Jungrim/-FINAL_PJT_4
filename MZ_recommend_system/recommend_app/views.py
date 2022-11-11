@@ -48,7 +48,10 @@ def basicSelect(request):
         recommend_code_list = user_include_df.loc[result_dong_list].index.values
         # result = {"dong": recommend_dong_list, "gu" : recommend_gu_list, "code" : recommend_code_list, "weight_user": user}
         result = zip(recommend_gu_list, recommend_dong_list, recommend_code_list)
-        return render(request, 'recommend_app/recommend_result.html', {'result': result})
+
+        title, tags = RML.get_dong_cluster(result_dong_list[0])
+
+        return render(request, 'recommend_app/recommend_result.html', {'result': result,'cluster_data' : {'title' : title,"tags" : tags}})
     else:
         form = WeightsForm()
 
@@ -163,4 +166,5 @@ def similarRecommend(request):
     recommend_code_list = basic_df.loc[result_dong_list].index.values
     # # result = {"dong": recommend_dong_list, "gu" : recommend_gu_list, "code" : recommend_code_list, "weight_user": user}
     result = zip(recommend_gu_list, recommend_dong_list, recommend_code_list)
-    return render(request, 'recommend_app/recommend_result.html', {'result': result})
+    title, tags = RML.get_dong_cluster(result_dong_list[0])
+    return render(request, 'recommend_app/recommend_result.html', {'result': result,'cluster_data' : {'title' : title,"tags" : tags}})
