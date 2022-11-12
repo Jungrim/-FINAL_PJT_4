@@ -144,33 +144,6 @@ console.log(maskWidth, maskHeight);
                 </div>
 
             </div>
-
-
-
-
-    <div class="container">
-        <div class="row" >
-        {% for gu,dong,code in result %}
-            <div class="col-md-4" id="resultdong">
-                <form action="{% url 'recommend_app:dongDetail' %}" method="post">
-                {% csrf_token %}
-                <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
-                    <img src="../../static/img/home.gif" width="60">{{gu}} {{dong}}
-                </button>
-                </form>
-            </div>
-        {% endfor %}
-            <div class="col-md-6"></div>
-        </div>
-    </div>
-
-    <div class="contianer">
-        <div class="col-md-6">
-            {% for value in sim_list %}
-                <div class="col-md-4" id="similarity_dong">
-                    {{value}}
-                </div>
-            {% endfor %}
         </div>
     </div>
 
