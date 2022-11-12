@@ -168,27 +168,24 @@ console.log(maskWidth, maskHeight);
                 <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
                     <img src="../../static/img/home.gif" width="60">{{gu}} {{dong}}
                 </button>
-    <div style="width: 300px; height: 300px;">
-        <!--차트가 그려질 부분-->
-        <canvas id="myChart{{forloop.counter}}"></canvas>
-    </div>
+                    <div style="width: 100px; height: 100px;">
+                        <!--차트가 그려질 부분-->
+                        <canvas id="myChart{{forloop.counter}}"></canvas>
+                    </div>
                 </form>
 
             </div>
         {% endfor %}
-            <div class="col-md-6"></div>
-        </div>
-    </div>
-
-    <div class="contianer">
-        <div class="col-md-6">
             {% for value in sim_list %}
                 <div class="col-md-4" id="similarity_dong">
                     {{value}}
                 </div>
             {% endfor %}
+            <div class="col-md-6"></div>
         </div>
     </div>
+
+
 
 <style>
     #resulticon{
@@ -216,7 +213,7 @@ console.log(maskWidth, maskHeight);
         color : primary;
         margin-bottom: 100px;
         position : relative;
-        left : -10px;
+        left : 85px;
 
 
     }
