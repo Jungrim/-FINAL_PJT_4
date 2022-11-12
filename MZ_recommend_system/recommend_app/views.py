@@ -42,7 +42,7 @@ def basicSelect(request):
         weighted_user_df = RML.weighting(user_df, df, select, 'user')
         user_scaled = [weighted_user_df.loc['user'].values]
         user_group, user_include_df = RML.user_clustering(basic_df, df, user_scaled, first_pca, first_kmeans)
-        result_dong_list = RML.similarity(user_df, df.loc[user_include_df.index.values], "user", 3)
+        sim_list, result_dong_list = RML.similarity(user_df, df.loc[user_include_df.index.values], "user", 3)
         recommend_dong_list = user_include_df.loc[result_dong_list]['DONG'].values
         recommend_gu_list = user_include_df.loc[result_dong_list]['GU'].values
         recommend_code_list = user_include_df.loc[result_dong_list].index.values
@@ -51,7 +51,7 @@ def basicSelect(request):
 
         title, tags = RML.get_dong_cluster(result_dong_list[0])
 
-        return render(request, 'recommend_app/recommend_result.html', {'result': result,'cluster_data' : {'title' : title,"tags" : tags}})
+        return render(request, 'recommend_app/recommend_result.html', {'result': result,'sim_list':sim_list,'cluster_data' : {'title' : title,"tags" : tags}})
     else:
         form = WeightsForm()
 
@@ -160,11 +160,13 @@ def similarRecommend(request):
 
     dong_data = df.loc[[int(dong_code)]]
 
-    result_dong_list = RML.similarity(dong_data, df, int(dong_code), 4)[1:]
+    result_dong_sim, result_dong = RML.similarity(dong_data, df, int(dong_code), 4)
+    result_dong_list = result_dong[1:]
+    sim_list = result_dong_sim[1:]
     recommend_dong_list = basic_df.loc[result_dong_list]['DONG'].values
     recommend_gu_list = basic_df.loc[result_dong_list]['GU'].values
     recommend_code_list = basic_df.loc[result_dong_list].index.values
     # # result = {"dong": recommend_dong_list, "gu" : recommend_gu_list, "code" : recommend_code_list, "weight_user": user}
     result = zip(recommend_gu_list, recommend_dong_list, recommend_code_list)
     title, tags = RML.get_dong_cluster(result_dong_list[0])
-    return render(request, 'recommend_app/recommend_result.html', {'result': result,'cluster_data' : {'title' : title,"tags" : tags}})
+    return render(request, 'recommend_app/recommend_result.html', {'result': result,'sim_list':sim_list,'cluster_data' : {'title' : title,"tags" : tags}})

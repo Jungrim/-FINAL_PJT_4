@@ -19,7 +19,7 @@ console.log(maskWidth, maskHeight);
     loadingImg += "<div id='loadingImg'>";
     loadingImg += " <img src='../../static/img/loading.gif' style='position: relative; display: block; margin: 0px auto;'/>";
     loadingImg += "</div>";
-console.log("test2");
+    console.log("test2");
     //화면에 레이어 추가
     $('body')
         .append(mask)
@@ -144,6 +144,33 @@ console.log("test2");
                 </div>
 
             </div>
+
+
+
+
+    <div class="container">
+        <div class="row" >
+        {% for gu,dong,code in result %}
+            <div class="col-md-4" id="resultdong">
+                <form action="{% url 'recommend_app:dongDetail' %}" method="post">
+                {% csrf_token %}
+                <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
+                    <img src="../../static/img/home.gif" width="60">{{gu}} {{dong}}
+                </button>
+                </form>
+            </div>
+        {% endfor %}
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+
+    <div class="contianer">
+        <div class="col-md-6">
+            {% for value in sim_list %}
+                <div class="col-md-4" id="similarity_dong">
+                    {{value}}
+                </div>
+            {% endfor %}
         </div>
     </div>
 
