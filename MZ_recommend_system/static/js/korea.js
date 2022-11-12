@@ -5,8 +5,8 @@ window.onload = function() {
 //지도 그리기
 function drawMap(target) {
     // 캔버스 설정
-    var width = 1200;
-    var height = 500;
+    var width = 800;
+    var height = 200;
     
     var initialScale = 200000;
     var initialX = -11550; //초기 위치값 X
