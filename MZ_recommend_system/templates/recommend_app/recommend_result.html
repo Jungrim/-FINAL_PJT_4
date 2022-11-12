@@ -68,19 +68,39 @@ console.log(maskWidth, maskHeight);
     height: 700px;
     position:absolute;
     top : 20%;
-    left: 38%;
+    left: 37%;
 }
 .verticalright {
     border-left: 0.5px solid black;
     height: 700px;
     position:absolute;
     top : 20%;
-    right: 40%;
+    right: 38%;
+}
+#similarscore{
+    font-size : 20px;
+    position : relative;
+    top : -165%;
+    left : 36%;
+}
+
+#유사도{
+
+    font-size : 12px;
+    position : relative;
+    top : -159%;
+    left : 39%;
+
+
 }
 
 
 
 </style>
+
+{% for value in sim_list %}
+    <span>{{value}}</span>
+{% endfor %}
 <div class = "vertical"></div>
 <div class = "verticalright"></div>
 
@@ -118,26 +138,31 @@ console.log(maskWidth, maskHeight);
          {% endfor %}
         </section>
     </div>
-       <div style="width: 300px; height: 300px;">
-        <!--차트가 그려질 부분-->
-        <canvas id="myChart{{forloop.counter}}"></canvas>
-    </div>
+
 </div>
 
     <div class="py-5" >
+        <div class="d-flex justify-content-center" style="width: 280px; height: 280px; position :relative; left : 41.8%; margin-top : -6%; font-family: 'Pretendard-Regular'; font-size : 10px;">
+    <!--차트가 그려질 부분-->
+            <canvas class="d-flex justify-content-center" id="myChart{{forloop.counter}}"></canvas>
+        </div>
         <div class="container d-flex justify-content-center">
+
             <div class="row w-50" id="resulticon">
                 <div class="col-md-2">
 
+
                 </div>
             {% for gu,dong,code,sim in result %}
+
                 <div class="col-md-2  mx-2 d-flex justify-content-center" id="resultdong">
                     <form action="{% url 'recommend_app:dongDetail' %}" method="post">
                     {% csrf_token %}
                     <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
                         <img src="../../static/img/home{{ forloop.counter }}.png" width="60"><br>{{gu}} {{dong}}</br>
                     </button>
-                    {{sim}}
+                    <h4 id="유사도">유사도</h4>
+                    <h4 id="similarscore">{{sim}}</h4>
                     </form>
                 </div>
             {% endfor %}
@@ -145,6 +170,7 @@ console.log(maskWidth, maskHeight);
 
 
                 <div class="col-md-2">
+
 
                 </div>
 
@@ -177,20 +203,18 @@ console.log(maskWidth, maskHeight);
 <!--    </div>-->
 
     <div class="contianer">
-        <div class="col-md-6">
-            {% for value in sim_list %}
-                <div class="col-md-4" id="similarity_dong">
-                    {{value}}
-                </div>
-            {% endfor %}
-        </div>
+
     </div>
 
 <style>
     #resulticon{
         width: 120px;
         margin-top : 10%;
+    }
+    h4{
 
+        font-family: 'Pretendard-Regular';
+        font-size : 1px;
 
 
     }
@@ -212,7 +236,8 @@ console.log(maskWidth, maskHeight);
         color : primary;
         margin-bottom: 100px;
         position : relative;
-        left : -10px;
+        left : 3px;
+        top : -70%;
 
 
     }
@@ -263,7 +288,8 @@ console.log(maskWidth, maskHeight);
         font-family: 'Pretendard-Regular';
         font-size:60px;
         position : relative;;
-        left : 1%;
+        left : -0.5%;
+        top : 55%;
     }
 
 </style>
