@@ -81,7 +81,17 @@ console.log(maskWidth, maskHeight);
     font-size : 20px;
     position : relative;
     top : -165%;
-    left : 34%;
+    left : 36%;
+}
+
+#유사도{
+
+    font-size : 12px;
+    position : relative;
+    top : -159%;
+    left : 39%;
+
+
 }
 
 
@@ -128,14 +138,16 @@ console.log(maskWidth, maskHeight);
          {% endfor %}
         </section>
     </div>
-    <div class="d-flex justify-content-center" style="width: 280px; height: 280px; position :absolute; left : 42%; margin-top : 2%; font-family: 'Pretendard-Regular'; font-size : 10px;">
-    <!--차트가 그려질 부분-->
-        <canvas class="d-flex justify-content-center" id="myChart{{forloop.counter}}"></canvas>
-    </div>
+
 </div>
 
     <div class="py-5" >
+        <div class="d-flex justify-content-center" style="width: 280px; height: 280px; position :relative; left : 41.8%; margin-top : -6%; font-family: 'Pretendard-Regular'; font-size : 10px;">
+    <!--차트가 그려질 부분-->
+            <canvas class="d-flex justify-content-center" id="myChart{{forloop.counter}}"></canvas>
+        </div>
         <div class="container d-flex justify-content-center">
+
             <div class="row w-50" id="resulticon">
                 <div class="col-md-2">
 
@@ -149,6 +161,7 @@ console.log(maskWidth, maskHeight);
                     <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
                         <img src="../../static/img/home{{ forloop.counter }}.png" width="60"><br>{{gu}} {{dong}}</br>
                     </button>
+                    <h4 id="유사도">유사도</h4>
                     <h4 id="similarscore">{{sim}}</h4>
                     </form>
                 </div>
@@ -276,7 +289,7 @@ console.log(maskWidth, maskHeight);
         font-size:60px;
         position : relative;;
         left : -0.5%;
-        top : 125%;
+        top : 55%;
     }
 
 </style>
