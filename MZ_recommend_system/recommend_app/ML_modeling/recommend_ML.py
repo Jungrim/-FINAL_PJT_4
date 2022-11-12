@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn.cluster import KMeans
-from sklearn.preprocessing import RobustScaler
+from sklearn.preprocessing import RobustScaler,MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import PCA
 
@@ -86,6 +86,16 @@ def robust_scaling(df):
     ro_df.columns = df.columns
     return ro_df
 
+def minmax_scaling(df):
+    minmax_scaler = MinMaxScaler()
+
+    minmax_scaler.fit(df)
+
+    minmax_data = minmax_scaler.transform(df)
+    minmax_df = pd.DataFrame(minmax_data)
+    minmax_df.index = df.index
+    minmax_df.columns = df.columns
+    return minmax_df
 
 def preprocessing_df():
     area_df = merge_area_data()

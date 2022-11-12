@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../static/css/style.css" type="text/css">
 <link rel="stylesheet" href="../static/css/aquamarine.scss" type="text/css">
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
     function loadingProcess() {
         console.log("test");
@@ -134,6 +134,10 @@ console.log(maskWidth, maskHeight);
                     <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
                         <img src="../../static/img/home.gif" width="60"><br>{{gu}} {{dong}}</br>
                     </button>
+                        <div style="width: 300px; height: 300px;">
+                        <!--차트가 그려질 부분-->
+                            <canvas id="myChart{{forloop.counter}}"></canvas>
+                        </div>
                     </form>
                 </div>
             {% endfor %}
@@ -153,6 +157,37 @@ console.log(maskWidth, maskHeight);
 
     <div class="py-5" >
 
+
+
+    <div class="container">
+        <div class="row" >
+        {% for gu,dong,code in result %}
+            <div class="col-md-4" id="resultdong">
+                <form action="{% url 'recommend_app:dongDetail' %}" method="post">
+                {% csrf_token %}
+                <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
+                    <img src="../../static/img/home.gif" width="60">{{gu}} {{dong}}
+                </button>
+    <div style="width: 300px; height: 300px;">
+        <!--차트가 그려질 부분-->
+        <canvas id="myChart{{forloop.counter}}"></canvas>
+    </div>
+                </form>
+
+            </div>
+        {% endfor %}
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+
+    <div class="contianer">
+        <div class="col-md-6">
+            {% for value in sim_list %}
+                <div class="col-md-4" id="similarity_dong">
+                    {{value}}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
 <style>
@@ -236,5 +271,53 @@ console.log(maskWidth, maskHeight);
     }
 
 </style>
+
+
+<script>
+  var replace_str = "{{graph_data}}".replaceAll("&#x27;","\"");
+  var graph_data = JSON.parse(replace_str);
+  console.log(graph_data);
+
+
+  for(var i=1;i <4 ;i++){
+    var chart_name= "myChart" + i ;
+    var marksCanvas = document.getElementById(chart_name);
+
+    var marksData = {
+      labels: ["교통", "치안", "건강", "편의", "교육", "육아"],
+      datasets: [{
+        fill: true,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 99, 132)',
+        data: graph_data[i-1].slice(0,6)
+      }]
+    };
+
+    var radarChart = new Chart(marksCanvas, {
+      type: 'radar',
+      data: marksData,
+      options: {
+    	legend: {
+        	display: false
+            },
+        scale: {
+            ticks: {
+            callback: function() {return ""},
+            }
+
+        }
+    }
+
+
+    });
+  }
+
+</script>
+
+
 
 {% endblock %}
