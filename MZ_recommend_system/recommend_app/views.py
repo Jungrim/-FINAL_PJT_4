@@ -153,6 +153,8 @@ def facility_info(request):
     return JsonResponse(dictionary)
 
 def similarDong(request):
+    if not request.user.is_authenticated:
+        return redirect('accounts/login')
     return render(request, 'recommend_app/similar_dong.html')
 
 
