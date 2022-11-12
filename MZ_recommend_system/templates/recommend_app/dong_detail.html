@@ -67,8 +67,8 @@
               data-query="transportation">교통</a> </li>
           <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabtwo"
               data-query="safety">치안</a> </li>
-          <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabthree"
-              data-query="noise_vibration_num">조용한 동네</a> </li>
+          <!-- <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabthree"
+              data-query="noise_vibration_num">조용한 동네</a> </li> -->
           <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabtwo"
               data-query="leisure_num">실내레저시설</a> </li>
           <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabtwo"
@@ -101,8 +101,8 @@
               data-query="safe_dlvr_num">안심택배</a> </li>
           <li class="nav-item"> <a class="nav-link infra" href="" data-toggle="pill" data-target="#tabtwo"
               data-query="car_shr_num">나눔카</a> </li>
-          <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabtwo"
-              data-query="mz_pop_cnt">MZ세대 인구수</a> </li>
+          <!-- <li class="nav-item"> <a href="" class="nav-link infra" data-toggle="pill" data-target="#tabtwo"
+              data-query="mz_pop_cnt">MZ세대 인구수</a> </li> -->
         </ul>
       </div>
     </div>
@@ -349,7 +349,15 @@
           '<div class="iw_inner">',
           '   <h3>' + names[i] + '</h3>',
           '</div>'
-        ].join('')
+        ].join(''),
+        maxWidth: 350,
+        backgroundColor: "#EAEAEA",
+        borderColor: "#12BBAD",
+        borderWidth: 5,
+        anchorSize: new naver.maps.Size(20, 24),
+        anchorSkew: false,
+        anchorColor: "#EAEAEA",
+        pixelOffset: new naver.maps.Point(20, -20)
       }));
     });
 
