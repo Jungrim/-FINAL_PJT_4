@@ -127,12 +127,13 @@ console.log(maskWidth, maskHeight);
 
                 </div>
 
-            {% for gu,dong,code in result %}
+            {% for gu,dong,code,sim in result %}
                 <div class="col-md-2  mx-2 d-flex justify-content-center" id="resultdong">
                     <form action="{% url 'recommend_app:dongDetail' %}" method="post">
                     {% csrf_token %}
                     <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
                         <img src="../../static/img/home.gif" width="60"><br>{{gu}} {{dong}}</br>
+                        <br> {{sim}} % 유사
                     </button>
                         <div style="width: 300px; height: 300px;">
                         <!--차트가 그려질 부분-->
@@ -317,6 +318,7 @@ console.log(maskWidth, maskHeight);
   }
 
 </script>
+
 
 
 
