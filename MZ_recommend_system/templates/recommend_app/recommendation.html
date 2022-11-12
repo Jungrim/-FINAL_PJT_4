@@ -52,28 +52,45 @@ img{
   margin-left : 10%;
 }
 
+#buttongroupstar{
+  margin-left : -20%;
+  margin-top: 5%;
 
+}
 
+#선호도제목{
+  margin-right : 1%;
+  font-weight : 600;
+
+}
+#listbuttongroup{
+
+  margin-left:
+
+}
 
 </style>
 
 
 
 <form class="form-horizontal" action="#" method="POST"> 
-  {% csrf_token %} <div class="py-5 text-center">
+  {% csrf_token %}
+  <div class="py-5 text-center ">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h1 id="선호도제목" style="font-family: 'Pretendard-Regular'; ">선호도에 따라 5가지 요소에 점수를 주세요</h1>
+            <h1 id="선호도제목" style="font-family: 'Pretendard-Regular'; font-size: 20px; ">선호도에 따라 5가지 요소에 점수를 주세요</h1>
           </div>
         </div>
       </div>
     </div>
-    <div class="py-5" id="allfeatuers">
+    <div class="py-5  " id="allfeatuers">
       <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <ul class="list-group list-group-flush" id="star5">
+        <div class="row  d-flex justify-content-center">
+          <div class="col-md-6"></div>
+
+          <div class="col-md-6 border-bottom border-dark " id="buttongroupstar">
+            <ul class="list-group list-group-flush " id="star5">
               <li class="list-group-item"><i class="fa text-primary mr-2 fa-car"></i>교통</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-primary px-4 active">
@@ -153,16 +170,19 @@ img{
                   <input type="radio" name="parenting" id="parenting" value="5"> 5점 </label>
               </div>
             </ul>
+
           </div>
+
+          <div class="col-md-6"></div>
         </div>
       </div>
     </div>
     <div class="py-5" style="">
-      <div class="container">
+      <div class="container" id="listbuttongroup">
 
-        <div class="row">
+        <div class="row justify-content-center">
 
-          <div class="col-md-6" style="">
+          <div class="col-md-4" style="">
             <div class="list-group text-center">
               <input type="hidden" name="noise_vibration_num" value=0>
               <input type="hidden" name="mz_pop_cnt" value=0>
@@ -185,11 +205,11 @@ img{
               <label class="list-group-item" for="golf_num" ><img src="../../static/img/free-icon-golf-5929982.png"> 골프</label>
               <input type="checkbox" name="safe_dlvr_num" value=1 id="safe_dlvr_num">
               <label class="list-group-item" for="safe_dlvr_num" ><img src="../../static/img/free-icon-courier-5310800.png"> 안심택배</label>
-
             </div>
           </div>
-          <div class="col-md-6" style="">
+          <div class="col-md-4" style="">
             <div class="list-group text-center">
+
 
               <input type="hidden" name="leisure_num" value=0>
               <input type="hidden" name="park_num" value=0>
