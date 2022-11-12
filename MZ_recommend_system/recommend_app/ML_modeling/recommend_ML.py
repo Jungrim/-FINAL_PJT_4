@@ -228,7 +228,13 @@ def similarity(user_df, df, user_name, num): # 유저 데이터, 유사도 측�
     sim_matrix = pd.DataFrame(rc_sim,columns=con_data.index).loc[[0]].T
     rank = sim_matrix[0].sort_values(ascending=False) # 유사도 순서로 정렬
     ranking = rank[1:num+1].index.tolist() # 1~n 위 리스트
-    return ranking
+    sim = rank[1:num+1].tolist() # 1~n 위 코사인 유사도
+    sim_list = []
+    for x in sim:
+        s = (x+1) / 2 *100
+        s = round(s,1)
+        sim_list.append(s)
+    return sim_list, ranking
 
 
 def get_dong_cluster(dong_code):

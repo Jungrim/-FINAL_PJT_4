@@ -35,28 +35,23 @@ def basicSelect(request):
         req_dict = request.POST.dict()
         user = [int(i) for i in list(req_dict.values())[1:-1]]
 
-        # df : 426개의 행정동 데이터를 스케일링까지 진행한 data
         df = RML.preprocessing_df()
-
-        graph_data = RML.minmax_scaling(df)
-
         basic_df, first_kmeans, first_pca = RML.first_clustering(df)
         first_category, second_category = RML.create_category(df)
         user_df, select = RML.user_scaling(first_category, second_category, user, df)
         weighted_user_df = RML.weighting(user_df, df, select, 'user')
         user_scaled = [weighted_user_df.loc['user'].values]
         user_group, user_include_df = RML.user_clustering(basic_df, df, user_scaled, first_pca, first_kmeans)
-        result_dong_list = RML.similarity(user_df, df.loc[user_include_df.index.values], "user", 3)
+        sim_list, result_dong_list = RML.similarity(user_df, df.loc[user_include_df.index.values], "user", 3)
         recommend_dong_list = user_include_df.loc[result_dong_list]['DONG'].values
         recommend_gu_list = user_include_df.loc[result_dong_list]['GU'].values
         recommend_code_list = user_include_df.loc[result_dong_list].index.values
-        graph_data_list = graph_data.loc[result_dong_list].values.tolist()
         # result = {"dong": recommend_dong_list, "gu" : recommend_gu_list, "code" : recommend_code_list, "weight_user": user}
         result = zip(recommend_gu_list, recommend_dong_list, recommend_code_list)
 
         title, tags = RML.get_dong_cluster(result_dong_list[0])
 
-        return render(request, 'recommend_app/recommend_result.html', {'result': result,'cluster_data' : {'title' : title,"tags" : tags},'graph_data' : graph_data_list})
+        return render(request, 'recommend_app/recommend_result.html', {'result': result,'sim_list':sim_list,'cluster_data' : {'title' : title,"tags" : tags}})
     else:
         form = WeightsForm()
 
@@ -165,11 +160,13 @@ def similarRecommend(request):
 
     dong_data = df.loc[[int(dong_code)]]
 
-    result_dong_list = RML.similarity(dong_data, df, int(dong_code), 4)[1:]
+    result_dong_sim, result_dong = RML.similarity(dong_data, df, int(dong_code), 4)
+    result_dong_list = result_dong[1:]
+    sim_list = result_dong_sim[1:]
     recommend_dong_list = basic_df.loc[result_dong_list]['DONG'].values
     recommend_gu_list = basic_df.loc[result_dong_list]['GU'].values
     recommend_code_list = basic_df.loc[result_dong_list].index.values
     # # result = {"dong": recommend_dong_list, "gu" : recommend_gu_list, "code" : recommend_code_list, "weight_user": user}
     result = zip(recommend_gu_list, recommend_dong_list, recommend_code_list)
     title, tags = RML.get_dong_cluster(result_dong_list[0])
-    return render(request, 'recommend_app/recommend_result.html', {'result': result,'cluster_data' : {'title' : title,"tags" : tags}})
+    return render(request, 'recommend_app/recommend_result.html', {'result': result,'sim_list':sim_list,'cluster_data' : {'title' : title,"tags" : tags}})
