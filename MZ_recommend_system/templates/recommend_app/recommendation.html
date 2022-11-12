@@ -49,7 +49,7 @@ img{
 #star5{
   font-size : 25px;
   font-weight : 600;
-  margin-left : 10%;
+  /*margin-left : 10%;*/
 }
 
 #buttongroupstar{
@@ -76,7 +76,7 @@ img{
 <form class="form-horizontal" action="#" method="POST"> 
   {% csrf_token %}
   <div class="py-5 text-center ">
-      <div class="container">
+      <div class="container ">
         <div class="row">
           <div class="col-md-12">
             <h1 id="선호도제목" style="font-family: 'Pretendard-Regular'; font-size: 20px; ">선호도에 따라 5가지 요소에 점수를 주세요</h1>
@@ -86,10 +86,10 @@ img{
     </div>
     <div class="py-5  " id="allfeatuers">
       <div class="container">
-        <div class="row  d-flex justify-content-center">
-          <div class="col-md-6"></div>
+        <div class="row d-flex justify-content-center  ">
+          <div class="col-md-4"></div>
 
-          <div class="col-md-6 border-bottom border-dark " id="buttongroupstar">
+          <div class="col-md-4 d-flex justify-content-center " id="buttongroupstar">
             <ul class="list-group list-group-flush " id="star5">
               <li class="list-group-item"><i class="fa text-primary mr-2 fa-car"></i>교통</li>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -205,6 +205,8 @@ img{
               <label class="list-group-item" for="golf_num" ><img src="../../static/img/free-icon-golf-5929982.png"> 골프</label>
               <input type="checkbox" name="safe_dlvr_num" value=1 id="safe_dlvr_num">
               <label class="list-group-item" for="safe_dlvr_num" ><img src="../../static/img/free-icon-courier-5310800.png"> 안심택배</label>
+              <input type="checkbox" name="noise_vibration_num" value=1 id="noise_vibration_num">
+              <label class="list-group-item" for="noise_vibration_num" ><img src="../../static/img/shh.png" style="width : 8%;"> 조용한 동네</label>
             </div>
           </div>
           <div class="col-md-4" style="">
