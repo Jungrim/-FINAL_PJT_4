@@ -158,7 +158,7 @@ console.log(maskWidth, maskHeight);
                 <div class="col-md-2  mx-2 d-flex justify-content-center" id="resultdong">
                     <form action="{% url 'recommend_app:dongDetail' %}" method="post">
                     {% csrf_token %}
-                    <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}} {{dong}} {{code}}">
+                    <button onclick ="loadingProcess()" class="resulttobutton btn " name="dong_info" id="{{ forloop.counter }}dong"  value="{{gu}}@{{dong}}@{{code}}@{{graph_data}}@{{forloop.counter0}}">
                         <img src="../../static/img/home{{ forloop.counter }}.png" width="60"><br>{{gu}} {{dong}}</br>
                     </button>
                     <h4 id="유사도">유사도</h4>
