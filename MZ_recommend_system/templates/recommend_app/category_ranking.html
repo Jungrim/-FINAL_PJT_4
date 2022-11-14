@@ -58,21 +58,21 @@
         #gold{
     position : relative;
     left :160px;
-    top:-250px;
+    top:-150px;
     width : 10%;
     height : 10%;
         }
         #silver{
     position : relative;
     left :45px;
-    top:-100px;
+
     width : 10%;
     height : 10%;
         }
         #bronze{
     position : relative;
-    left :-70px;
-    top:60px;
+    left :-60px;
+    top:170px;
     width : 10%;
     height : 10%;
         }
@@ -81,7 +81,7 @@
           font-size : 50px;
           position : relative;
           left :300px;
-          top:30px;
+          top:125px;
           font-weight : 400;
 
         }
@@ -89,7 +89,7 @@
           font-size : 50px;
           position : relative;
           left :300px;
-          top:90px;
+          top:190px;
           font-weight : 400;
 
 
@@ -98,7 +98,7 @@
           font-size : 50px;
           position : relative;
           left :300px;
-          top:155px;
+          top:270px;
           font-weight : 400;
 
 
@@ -126,12 +126,31 @@ button:focus{
     outline:none;
     }
 
+.nav-tiem{
+
+
+
+
+}
+
+ul{
+
+    color:#12bbad;
+
+}
+li {
+
+    right : -1%;
+
+
+}
+
 </style>
 <div class="pt-5 d-flex justify-content-center">
   <div class="container mt-5 m-lg-0" style="width : 200%;">
-   <div class="row">
-      <div class="col-md-14 border border-primary" id="featureline">
-        <ul class="nav nav-pills m-auto font-weight-bold " id="navbox" style="position : relative;  left:0.5%; top :5%; font-size : 12px;  ">
+   <div class="row d-flex justify-content-center">
+      <div class="col-md-10 border border-primary" id="featureline">
+        <ul class="nav nav-pills m-auto font-weight-bold " id="navbox" style="position : relative; color: primary; left:0.5%; top :5%; font-size : 18px; font-family: 'Pretendard-Regular'; margin-left : 50%; ">
           <li class="nav-item"> <button onclick="ranking_func('transportation')" class="menu_item nav-link infra">교통</button> </li>
           <li class="nav-item"> <button onclick="ranking_func('safety')" class=" menu_item nav-link infra" >치안</button> </li>
           <li class="nav-item"> <button onclick="ranking_func('noise_vibration_num')" class="menu_item nav-link infra">조용한 동네</button> </li>
@@ -159,7 +178,7 @@ button:focus{
 
   <div class="py-1">
     <div class="container justify-content-center" >
-      <div class="container" id="kingcontainer">
+      <div class="container" id="kingcontainer" style="position: relative; left:8%;">
         <a href="" class=" nav-link" data-toggle="pill" data-target="#tabone" id="first">&nbsp;</a>
         <a href="" class="nav-link"  data-toggle="pill" data-target="#tabtwo" id="second">&nbsp;</a>
         <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree" id="third">&nbsp;</a>
