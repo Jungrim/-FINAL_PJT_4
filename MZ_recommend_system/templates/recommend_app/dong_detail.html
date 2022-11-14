@@ -4,12 +4,12 @@
 <style>
   .chartbar{
     position : relative;
-    left : -40%;
-    top : 1000%;
+    left : -8%;
+    top : -50%;
 
     margin-top : 5%;
 
-    width : 60%;
+    width : 50%;
     /*height : 500px;*/
   }
   #textbox{
@@ -19,17 +19,18 @@
   }
   #map{
     position :relative;
-    left : 42%;
-    top: -165%;
+    left : 38%;
+    top: -80%;
 
 
     width:80%;
-    height:35vh;
+    height:45vh;
   }
 
   #yourdong{
     position : relative;
     left : -130%;
+    top : 10%;
     margin-top:100%;
     font-size : 25px;
     font-weight : 400;
@@ -39,16 +40,25 @@
   }
   #dongnamedetail{
     position : relative;
-    left : -120%;
+    left : -105%;
     font-size : 70px;
     font-weight : 400;
-    top : -10%;
+    top : 10%;
 
 
   }
   #featureline{
     margin-left : -50%;
   }
+
+  .verticalright {
+    border-left: 0.5px solid black;
+    height: 420px;
+    position:relative;
+    top : 20%;
+    right: 40%;
+    width : 2px;
+}
 
 
 </style>
@@ -109,11 +119,13 @@
 
 
       </div>
-      <canvas class="d-flex justify-content-center" id="myChart"></canvas>
+      <div class="col-md-4"><div class = "verticalright"></div></div>
+
 
 
 
       <div class="col-md-10">
+
         <div id="map" style=""></div>
       </div>
     </div>
@@ -122,6 +134,7 @@
 
     </div>
     <div class="chartbar">
+      <canvas class="d-flex justify-content-center" id="myChart"></canvas>
 
     </div>
 
