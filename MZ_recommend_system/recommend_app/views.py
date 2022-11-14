@@ -184,6 +184,8 @@ def similarDong(request):
 
 def similarRecommend(request):
     dong_code = request.POST['dong_code']
+    if dong_code == "":
+        return render(request, 'recommend_app/similar_dong.html',{'data' : False})
     df = RML.preprocessing_df()
     graph_data = RML.minmax_scaling(df)
 

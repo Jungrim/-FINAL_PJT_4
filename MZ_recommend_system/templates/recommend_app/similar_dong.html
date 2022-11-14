@@ -99,10 +99,14 @@ button{
 
 
 
-
-
 </style>
-
+<script>
+    var data = '{{data}}';
+    console.log(data);
+    if (data == 'False'){
+        alert('동네를 선택 후 버튼을 눌러주세요.');
+    }
+</script>
 <div class="px-5" id="sectionfull">
     <div class="container" id="similarbox">
       <div class="row" id="rowbox">
