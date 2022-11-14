@@ -103,141 +103,59 @@
 
 
         }
+.menu_item{
+  border :0;
+  outline: 0;
+  background-color : white;
+}
+.menu_item:hover {
+color: #12BBAD;
 
+}
+.border {
+  border: 2px solid #dee2e6 !important;
+  padding : 10px;}
+
+
+.border-primary {
+  border-color: #12bbad !important;
+   padding: 10px; }
+
+button:focus{
+    border: none;
+    outline:none;
+    }
 
 </style>
-<div class="content-wrap">
-        <div class="content">
-            <header class="codrops-header">
-                <nav class="codrops-demos">
-                    <button onclick="ranking_func('transportation')">교통</button>
-                    <button onclick="ranking_func('safety')">치안</button>
-                    <button onclick="ranking_func('education')">교육</button>
-                     <button onclick="ranking_func('medical')">건강</button>
-                     <button onclick="ranking_func('facilities')">편의</button>
-                     <button onclick="ranking_func('parenting')">육아</button>
-                     <button onclick="ranking_func('kids_num')">키즈카페</button>
-                     <button onclick="ranking_func('mz_pop_cnt')">젊은동네</button>
-                     <button onclick="ranking_func('noise_vibration_num')">조용한동네</button>
-                     <button onclick="ranking_func('gym_num')">헬스장</button>
-                      <button onclick="ranking_func('golf_num')">골프장</button>
-                    <button onclick="ranking_func('park_num')">공원</button>
-                    <button onclick="ranking_func('starbucks_num')">스세권</button>
-                    <button onclick="ranking_func('mc_num')">맥세권</button>
-                    <button onclick="ranking_func('golf_num')">골프장</button>
-                    <button onclick="ranking_func('ani_hspt_num')">반려동물</button>
-                    <button onclick="ranking_func('coliving_num')">쉐어하우스</button>
-                    <button onclick="ranking_func('car_shr_num')">나눔카</button>
-                    <button onclick="ranking_func('vegan_cnt')">채식</button>
-                    <button onclick="ranking_func('safe_dlvr_num')">안심택배</button>
+<div class="pt-5 d-flex justify-content-center">
+  <div class="container mt-5 m-lg-0" style="width : 200%;">
+   <div class="row">
+      <div class="col-md-14 border border-primary" id="featureline">
+        <ul class="nav nav-pills m-auto font-weight-bold " id="navbox" style="position : relative;  left:0.5%; top :5%; font-size : 12px;  ">
+          <li class="nav-item"> <button onclick="ranking_func('transportation')" class="menu_item nav-link infra">교통</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('safety')" class=" menu_item nav-link infra" >치안</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('noise_vibration_num')" class="menu_item nav-link infra">조용한 동네</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('leisure_num')" class="menu_item nav-link infra">실내레저시설</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('gym_num')" class="menu_item nav-link infra">헬스장</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('golf_num')" class="menu_item nav-link infra">골프장</button> </li>
+          <li class="nav-item"> <button  onclick="ranking_func('park_num')" class="menu_item nav-link infra">공원</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('facilities')" class="menu_item nav-link infra">편의시설</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('medical')" class="menu_item nav-link infra">의료시설</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('starbucks_num')" class="menu_item nav-link infra">스타벅스</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('mc_num')" class="menu_item nav-link infra">맥도날드</button> </li>
+          <li class="nav-item"> <button  onclick="ranking_func('vegan_cnt')" class="menu_item nav-link infra">채식</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('coliving_num')" class="menu_item nav-link infra">코리빙</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('education')" class="menu_item nav-link infra">교육</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('parenting')" class="menu_item nav-link infra">육아</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('kids_num')" class="menu_item nav-link infra">키즈카페</button> </li>
+          <li class="nav-item"> <button  onclick="ranking_func('ani_hspt_num')" class="menu_item nav-link infra">동물병원</button> </li>
+          <li class="nav-item"> <button  onclick="ranking_func('safe_dlvr_num')" class="menu_item nav-link infra">안심택배</button> </li>
+          <li class="nav-item"> <button class="menu_item nav-link infra"  onclick="ranking_func('car_shr_num')">나눔카</button> </li>
+          <li class="nav-item"> <button onclick="ranking_func('mz_pop_cnt')" class="menu_item nav-link infra">MZ세대 인구수</button> </li>
+        </ul>
+      </div>
+   </div>
 
-                </nav>
-            </header>
-    </div>
-</div>
-<!--                    <div class="flex-grow-1 w-100 o-hidden">-->
-<!--                        <ul class="nav nav-fill text-uppercase small position-relative flex-nowrap" id="contentnav">-->
-<!--                            <li class="nav-item">-->
-<!--                        &lt;!&ndash;                    <button onclick="ranking_func('transportation')" class="btn-outline-primary btn-block " data-toggle="pill" data-target="#tabtwo" >교통</button>&ndash;&gt;-->
-<!--                                <a href="#" onclick="ranking_func('transportation')" class="nav-link">교통</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" onclick="ranking_func('safety')" class="nav-link">치안</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('education')">교육</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('medical')">건강</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('facilities')" >편의</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('parenting')" >육아</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('kids_num')" >키즈카페</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('mz_pop_cnt')" >젊은 동네</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('noise_vibration_num')" >조용한 동네</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('gym_num')" >헬스장</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('golf_num')" >골프장</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('park_num')" >공원</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('starbucks_num')" >스세권</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('mc_num')" >맥세권</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('kids_num')" >키즈카페</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('ani_hspt_num')" >반려동물</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('coliving_num')" >쉐어하우스</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('car_shr_num')" >나눔카</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('vegan_cnt')" >채식</a>-->
-<!--                            </li>-->
-<!--                            <li class="nav-item">-->
-<!--                                <a href="#" class="nav-link" onclick="ranking_func('safe_dlvr_num')" >안심택배</a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                    <div class="flex-shrink-0">-->
-<!--                        <a href="#" class="btn-right btn-link toggle p-2 text-dark"><i class="fa fa-arrow-right"></i></a>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-
-    <!--          <ul class="nav nav-pills flex-grow-1   nav-fill " >-->
-    <!--&lt;!&ndash;              nav-tabs flex-sm-row flex-grow-1 flex-column gap-2 col-18 m-0 d-grid&ndash;&gt;-->
-    <!--<div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">-->
-    <!--          <div class="btn-group mx-auto " role="group" aria-label="First group">-->
-    <!--            <button onclick="ranking_func('transportation')" class="btn-outline-primary btn-block " data-toggle="pill" data-target="#tabtwo" >교통</button>-->
-    <!--            <button onclick="ranking_func('safety')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">치안</button>-->
-    <!--            <button onclick="ranking_func('noise_vibration_num')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">조용한 동네</button>-->
-    <!--            <button onclick="ranking_func('leisure_num')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">실내레저시설</button>-->
-    <!--            <button onclick="ranking_func('gym_num')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">헬스장</button>-->
-    <!--            <button onclick="ranking_func('golf_num')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">골프장</button>-->
-    <!--            <button onclick="ranking_func('park_num')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">공원</button>-->
-    <!--            <button onclick="ranking_func('facilities')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">편의</button>-->
-    <!--            <button onclick="ranking_func('medical')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">건강</button>-->
-    <!--            <button onclick="ranking_func('starbucks_num')" class="btn-outline-primary btn-block" data-toggle="pill" data-target="#tabtwo">스세권</button>-->
-    <!--            &lt;!&ndash;              </div>&ndash;&gt;-->
-    <!--            &lt;!&ndash;              <div class="btn-group d-grid gap-2 col-30 mx-auto" role="group" aria-label="Thrid group">&ndash;&gt;-->
-    <!--            <button onclick="ranking_func('mc_num')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">맥세권</button>-->
-    <!--            <button onclick="ranking_func('vegan_cnt')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">채식</button>-->
-    <!--            <button onclick="ranking_func('coliving_num')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">쉐어하우스</button>-->
-    <!--            <button onclick="ranking_func('education')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">교육</button>-->
-    <!--            <button onclick="ranking_func('parenting')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">육아</button>-->
-    <!--            <button onclick="ranking_func('kids_num')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabthree">키즈카페</button>-->
-    <!--            <button onclick="ranking_func('ani_hspt_num')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">반려동물</button>-->
-    <!--            <button onclick="ranking_func('safe_dlvr_num')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">안심택배</button>-->
-    <!--            <button onclick="ranking_func('car_shr_num')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">나눔카</button>-->
-    <!--            <button onclick="ranking_func('mz_pop_cnt')" class="btn-secondary btn-block" data-toggle="pill" data-target="#tabtwo">젊은 동네</button>-->
-    <!--          </div>-->
-
-            <!--        기존있던 코드    <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">편의시설</a> </li>-->
-    <!--          </ul>-->
-<!--    </div>-->
-<!--</div>-->
 
   <div class="py-1">
     <div class="container justify-content-center" >
@@ -269,22 +187,15 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4"></div>
+
       </div>
     </div>
     </div>
-    <div class="py-5" >
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-        </div>
-      </div>
-    </div>
+
 </div>
 
 
-<script type="text/javascript">
-  $(function(){
-});
-</script>
+</div>
+
+
 {% endblock %}
