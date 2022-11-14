@@ -5,25 +5,24 @@
 
 
 <div class="pt-5 justify-content-center">
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="px-md-5 col-md-12">-->
-<!--        <h1 class="text-primary mb-4"> <b>{{data.dong_name}}</b></h1>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
   <div class="container mt-5">
     <div class="row " id="textbox">
       <div class="col-md">
         <span class="text-dark" id="yourdong">당신의 동네인</span>
         <span class="text-primary " id="dongnamedetail"><br> &nbsp;{{data.dong_name}}</br></span>
       </div>
+
       <div class="col-md">
         <div id="map" style=""></div>
       </div>
     </div>
+    <div>
+     <canvas class="d-flex justify-content-center" id="myChart"></canvas>
+    </div>
+
   </div>
 </div>
+
 <style>
   #textbox{
 
@@ -108,19 +107,10 @@
     </div>
   </div>
 </div>
-<div class="py-5">
-
-</div>
 
 
-
-<!--div class="col-md-5" style=""><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div-->
-</div>
-</div>
-</div>
 
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=liyb9vr43o"></script>
-
 
 <script>
 
@@ -396,26 +386,69 @@
 
 </script>
 
+
 <script>
+  var replace_str = "{{graph_key}}".replaceAll("&#x27;","\"");
+  var graph_key = JSON.parse(replace_str);
 
+  var replace_str = "{{graph_value}}".replaceAll("&#x27;","\"");
+  var graph_value = JSON.parse(replace_str);
 
+    var replace_str = "{{graph_mean_dict}}".replaceAll("&#x27;","\"");
+  var graph_mean_dict = JSON.parse(replace_str);
+  console.log(graph_mean_dict);
 
+  var mean_arr = [];
+  for(var i=0;i<6;i++){
+    mean_arr.push(graph_mean_dict[graph_key[i]]);
+  }
 
+  console.log(mean_arr);
+  var chart_name= "myChart"
+  var marksCanvas = document.getElementById(chart_name);
+  console.log(marksCanvas);
+  var marksData = {
+   labels: graph_key.slice(0,6),
+  datasets: [{
+    label: '{{data.dong_name}}',
+    data: graph_value.slice(0,6),
+    backgroundColor: 'rgba(255, 205, 86, 0.2)',
+    borderColor: 'rgb(255, 205, 86)',
+    borderWidth: 1
+  },{
+    label: '서울 전체 평균',
+    data: mean_arr,
+    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    borderColor: 'rgb(75, 192, 192)',
+    borderWidth: 1
+  }]
+};
 
-
-
-
-
-
-
-
-
-
-
-
+var barChart = new Chart(marksCanvas, {
+  type: 'bar',
+  data: marksData,
+  options: {
+     legend: {
+        display: true
+     },
+     tooltips: {
+        enabled: false
+     },
+     scales: {
+        yAxes: [{
+            ticks: {
+                display: false
+            }
+        }]
+    }
+    }
+ });
 
 
 </script>
+
+
+
 
 
 {% endblock %}

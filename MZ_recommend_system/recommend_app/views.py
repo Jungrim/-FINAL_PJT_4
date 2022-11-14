@@ -20,11 +20,13 @@ import sys
 
 import recommend_app.ML_modeling.recommend_ML as RML
 import json
+import ast
 
 def index(request):
     return render(request, 'recommend_app/index.html')
 
 def basicSelect(request):
+
     if not request.user.is_authenticated:
         return redirect('accounts/login')
     if request.method == 'POST':
@@ -89,15 +91,37 @@ def introduction(request):
     return render(request, 'recommend_app/introduction.html')
 
 def dongDetail(request):
+
     data = request.POST['dong_info']
-    dong_info = data.split(" ")
+    dong_info = data.split("@")
 
     # dong_info[0] : 구 이름
     # dong_info[1] : 동 이름
     # dong_info[2] : 동 코드
-
+    df = RML.preprocessing_df()
+    graph_data = RML.minmax_scaling(df)
+    graph_mean_data = graph_data.mean()
+    graph_mean_dict = graph_mean_data.to_dict()
     gu_name = dong_info[0]
     dong_name = dong_info[1]
+    select_idx = int(dong_info[4])
+    graph_data = ast.literal_eval(dong_info[3])[select_idx]
+
+    graph_cate_list = ['교통', '치안', '건강', '편의시설', '교육', '육아', 'MZ_POP_CNT', 'COLIVING_NUM',\
+       'VEGAN_CNT', 'KIDS_NUM', 'PARK_NUM', 'STARBUCKS_NUM', 'MC_NUM',\
+       'NOISE_VIBRATION_NUM', 'SAFE_DLVR_NUM', 'LEISURE_NUM', 'GYM_NUM',\
+       'GOLF_NUM', 'CAR_SHR_NUM', 'ANI_HSPT_NUM']
+
+    # argmax 써서 값, 카테고리 따로 리스트 뽑고,
+    # 리스트로 전달 해야 그래프 그리기 쉬움!
+    graph_dict = dict(zip(graph_cate_list, graph_data))
+    sorted_graph_data = sorted(graph_dict.items(), key=lambda x: x[1], reverse=True)
+    key_list = []
+    value_list = []
+    for i,j in sorted_graph_data:
+        key_list.append(i)
+        value_list.append(j)
+
 
     dict_list = []
     cate_list = ['transportation', 'safety', 'noise_vibration_num', 'leisure_num', 'gym_num', 'golf_num', 'park_num', 'facilities', 'medical', 'starbucks_num', 'mc_num', 'vegan_cnt', 'coliving_num', 'education', 'parenting', 'kids_num', 'ani_hspt_num', 'safe_dlvr_num', 'car_shr_num', 'mz_pop_cnt']
@@ -128,7 +152,7 @@ def dongDetail(request):
     dong_coordinate = {'lat': dong_coord[0], 'lon': dong_coord[1]}
     data = {"dong_name" : dong_name, "gu_name" : gu_name}
 
-    return render(request, 'recommend_app/dong_detail.html',{'data': data, 'dong_coordinate': dong_coordinate})
+    return render(request, 'recommend_app/dong_detail.html',{'data': data, 'dong_coordinate': dong_coordinate, 'graph_key' : key_list, 'graph_value' : value_list, 'graph_mean_dict':graph_mean_dict})
 
 
 def facility_info(request):
