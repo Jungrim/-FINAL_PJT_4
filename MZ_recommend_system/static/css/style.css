@@ -77,21 +77,7 @@ background-position: top left;
 background-size: 100%;	background-repeat: repeat;
 }
 
-#textindex{
-position : relative;
-left : 250px;
-margin-top : 20%;
-margin-bottom : 10%;
 
-}
-
-#dongnae{
-font-family: 'Pretendard-Regular';
-font-weight: 400;
-font-size : 35px;
-margin-inline: 120px;
-margin-bottom: auto;
-}
 
 h4{
 font-family: 'Pretendard-Regular';

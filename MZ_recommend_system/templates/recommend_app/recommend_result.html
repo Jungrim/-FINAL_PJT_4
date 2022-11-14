@@ -66,16 +66,19 @@ console.log(maskWidth, maskHeight);
 .vertical {
     border-left: 0.5px solid black;
     height: 700px;
-    position:absolute;
-    top : 20%;
-    left: 37%;
+    position:relative;
+    top : 14%;
+    left: 125%;
+    width : 2px;
+    margin : -100px;
 }
 .verticalright {
     border-left: 0.5px solid black;
     height: 700px;
-    position:absolute;
-    top : 20%;
-    right: 38%;
+    position:relative;
+    top : -1%;
+    right: 2%;
+    width : 2px;
 }
 #similarscore{
     font-size : 20px;
@@ -94,6 +97,12 @@ console.log(maskWidth, maskHeight);
 
 }
 
+#myChart{{forloop.counter}}{
+
+
+
+        }
+
 
 
 </style>
@@ -101,51 +110,40 @@ console.log(maskWidth, maskHeight);
 {% for value in sim_list %}
     <span>{{value}}</span>
 {% endfor %}
-<div class = "vertical"></div>
-<div class = "verticalright"></div>
 
-<div class="py-5 p-1 border-right border-left" id="allresultsection" >
 
-<!--    <hr id="leftline">-->
-<!--    <hr id="rightline">-->
-<!--    <div class="container  border-left border-right border-dark">-->
-    <div class="container d-flex justify-content-center" id="resultcontainer" >
-        <h1 class="text-center" >추천하는 동네는... </h1>
 
+
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"><div class = "vertical"></div></div>
+        <div class="col-md-4">
+          <h1 class="text-center">추천하는 동네는... </h1>
+          <section class="tiles">
+              {% for tag in cluster_data.tags %}
+
+                {{tag}}&nbsp;
+              {% endfor %}
+          </section>
+          <h2 class="text-center" id="clustertitle"> {{cluster_data.title}} <span class="lastword">입니다.</span></h2>
+        </div>
+        <div class="col-md-4"><div class = "verticalright"></div></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="d-flex justify-content-center" style="width: 280px; height: 280px; position :relative; left : 6%; top : -175%; margin-top : -6%; font-family: 'Pretendard-Regular'; font-size : 10px;">
+    <!--차트가 그려질 부분-->
+                <canvas class="d-flex justify-content-center" id="myChart{{forloop.counter}}"></canvas>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
     </div>
-
-
-
-
-    <div class="container  d-flex justify-content-center " id="titlecontainer" >
-        <h2 class="text-center" id="clustertitle"> {{cluster_data.title}} <span class="lastword">입니다.</span></h2>
-    </div>
-
-
-
-
-    <div class="container  d-flex justify-content-center m-auto " id="tagcontainer" >
-        <section class="tiles">
-        {% for tag in cluster_data.tags %}
-<!--            <article  style="background-color: #7ecaf6;">-->
-<!--&lt;!&ndash;                            <span class="image">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <img src="images/pic02.jpg" alt="" />&ndash;&gt;-->
-<!--&lt;!&ndash;                            </span>&ndash;&gt;-->
-            {{tag}}&nbsp;
-
-
-<!--            </article>-->
-         {% endfor %}
-        </section>
-    </div>
-
-</div>
+  </div>
 
     <div class="py-5" >
-        <div class="d-flex justify-content-center" style="width: 280px; height: 280px; position :relative; left : 41.8%; margin-top : -6%; font-family: 'Pretendard-Regular'; font-size : 10px;">
-    <!--차트가 그려질 부분-->
-            <canvas class="d-flex justify-content-center" id="myChart{{forloop.counter}}"></canvas>
-        </div>
+
         <div class="container d-flex justify-content-center">
 
             <div class="row w-50" id="resulticon">
@@ -222,10 +220,11 @@ console.log(maskWidth, maskHeight);
     #resultcontainer{
         width:1280px;
         height:100px;
-        margin-top:100px;
+
         font-family: 'Pretendard-Regular';
         position : relative;
         left : -10px;
+        top : 100%;
 
 
     }
@@ -244,6 +243,9 @@ console.log(maskWidth, maskHeight);
 
     h1{
         font-family: 'Pretendard-Regular';
+        position : relative;
+        top : 2%;
+        left: -2%;
 
         font-size : 20px;
         font-weight : 400;
@@ -263,33 +265,29 @@ console.log(maskWidth, maskHeight);
         font-size : 30px;
         font-weight : 600;
         color : #12bbad;
-        margin-left : -1%;
-        margin-top:-60px;
-        margin-bottom : 45px;
+        position: relative;
+        top : 6%;
+        left : -3%;
+
 
     }
     .tiles{
-        margin-left:-2%;
-
-    }
-    #tagcontainer{
         font-family: 'Pretendard-Regular';
-        font-size : 15px;
+        position :relative;
+        top : 18%;
+        left : 31%;
         font-weight : 600;
-        color : #151515;
-
-        align-content: center;
-
 
     }
+
 
     #resultdong{
 
         font-family: 'Pretendard-Regular';
         font-size:60px;
         position : relative;;
-        left : -0.5%;
-        top : 55%;
+        left : -1%;
+        top : -165%;
     }
 
 </style>
