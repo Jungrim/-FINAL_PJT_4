@@ -21,9 +21,14 @@
         var t = document.getElementById("third");
         var four = document.getElementById("fourth");
         var fif = document.getElementById("fifth");
-        f.text = rank_data[i].gu[0] + " " + rank_data[i].dong[0];
-        s.text = rank_data[i].gu[1] + " " + rank_data[i].dong[1];
-        t.text = rank_data[i].gu[2] + " " + rank_data[i].dong[2];
+        f.textContent = rank_data[i].gu[0] + " " + rank_data[i].dong[0];
+        s.textContent = rank_data[i].gu[1] + " " + rank_data[i].dong[1];
+        t.textContent = rank_data[i].gu[2] + " " + rank_data[i].dong[2];
+
+        f.value = rank_data[i].gu[0] + "@" + rank_data[i].dong[0] +'@'+ rank_data[i].dong_code[0];
+        s.value = rank_data[i].gu[1] + "@" + rank_data[i].dong[1] +'@'+ rank_data[i].dong_code[1];
+        t.value = rank_data[i].gu[2] + "@" + rank_data[i].dong[2] +'@'+ rank_data[i].dong_code[2];
+
 <!--        four.text = rank_data[i].gu[3] + " " + rank_data[i].dong[3];-->
 <!--        fif.text = rank_data[i].gu[4] + " " + rank_data[i].dong[4];-->
       }
@@ -83,6 +88,7 @@
           left :300px;
           top:125px;
           font-weight : 400;
+          color: #12BBAD;
 
         }
         #second{
@@ -91,6 +97,7 @@
           left :300px;
           top:190px;
           font-weight : 400;
+          color: #12BBAD;
 
 
         }
@@ -100,6 +107,7 @@
           left :300px;
           top:270px;
           font-weight : 400;
+          color: #12BBAD;
 
 
         }
@@ -126,12 +134,6 @@ button:focus{
     outline:none;
     }
 
-.nav-tiem{
-
-
-
-
-}
 
 ul{
 
@@ -144,6 +146,17 @@ li {
 
 
 }
+
+.rank_item{
+  border :0;
+  outline: 0;
+  background-color : white;
+}
+.rank_item:hover {
+color: #000000;
+
+}
+
 
 </style>
 <div class="pt-5 d-flex justify-content-center">
@@ -179,12 +192,15 @@ li {
   <div class="py-1">
     <div class="container justify-content-center" >
       <div class="container" id="kingcontainer" style="position: relative; left:8%;">
-        <a href="" class=" nav-link" data-toggle="pill" data-target="#tabone" id="first">&nbsp;</a>
-        <a href="" class="nav-link"  data-toggle="pill" data-target="#tabtwo" id="second">&nbsp;</a>
-        <a href="" class="nav-link" data-toggle="pill" data-target="#tabthree" id="third">&nbsp;</a>
+        <form id="rank_form" action="{% url 'recommend_app:dongDetail' %}" method="post"> {% csrf_token %}
+          <button class="rank_item nav-link" name="dong_info" id="first" value="" data-toggle="pill" data-target="#tabone">&nbsp;</button>
+          <button class="rank_item nav-link" name="dong_info" id="second" value="" data-toggle="pill" data-target="#tabtwo">&nbsp;</button>
+         <button class="rank_item nav-link" name="dong_info" id="third" value="" data-toggle="pill" data-target="#tabthree">&nbsp;</button>
         <img src="../static/img/free-icon-gold-medal-1910528.png" id="gold">
         <img src="../static/img/free-icon-silver-medal-1910479.png" id="silver">
         <img src="../static/img/free-icon-bronze-medal-5355514.png" id="bronze">
+        </form>
+
       </div>
 
       <div class="row">
