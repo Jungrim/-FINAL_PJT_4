@@ -130,7 +130,7 @@ index
                                     {% csrf_token %}
                 <h5 id="popular_dong" class="card-title">방화1동</h5>
                 <p id="popular_full" class="card-text">서울시 강서구 방화1동</p>
-                <button name="dong_info" id="popular_btn"  value="강서구@방화1동@1150063000" class="btn btn-primary">해당 동 알아보기(통계 페이지로 이동)</button>
+                <button name="dong_info" id="popular_btn"  value="강서구@방화1동@1150063000" class="btn btn-primary">해당 동 알아보기</button>
               </form>
             </div>
           </div>
@@ -152,7 +152,7 @@ index
                                     {% csrf_token %}
                 <h5 id="popular_keyword" class="card-title">스세권</h5>
                 <p id="popular_keyword_info" class="card-text">스타벅스가 많은 지역</p>
-                <button class="btn btn-primary">해당 키워드가 많은 동 알아보기(통계 페이지로이동)</button>
+                <button class="btn btn-primary">해당 키워드가 많은 동 알아보기</button>
               </form>
             </div>
           </div>
@@ -223,7 +223,7 @@ index
       </div>
       <div class="row">
         <div class="col-md-12 text-center">
-          <p class="mb-0">© 2014-2018 Dongnae. All rights reserved</p>
+          <p class="mb-0">© 2022 Dongnae. All rights reserved</p>
         </div>
       </div>
     </div>
@@ -239,7 +239,7 @@ index
 
     var timer = 0;
     function updatePopularTimer(){
-        timer = setInterval(updatePopular,1500);
+        timer = setInterval(updatePopular,3000);
     }
 
     function updatePopular(){
