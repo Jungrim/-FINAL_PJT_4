@@ -115,9 +115,9 @@ console.log(maskWidth, maskHeight);
     <div class="container">
       <div class="row">
         <div class="col-md-4"><div class = "vertical"></div></div>
-        <div class="col-md-4">
+        <div class="col-md-4 ">
           <h1 class="text-center">추천하는 동네는... </h1>
-          <section class="tiles">
+          <section class="tiles d-flex justify-content-center" style="width : 90%; position : relative; left : 12%;">
               {% for tag in cluster_data.tags %}
 
                 {{tag}}&nbsp;
@@ -128,7 +128,7 @@ console.log(maskWidth, maskHeight);
         <div class="col-md-4"><div class = "verticalright"></div></div>
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <div class="d-flex justify-content-center" style="width: 280px; height: 280px; position :relative; left : 6%; top : -175%; margin-top : -6%; font-family: 'Pretendard-Regular'; font-size : 10px;">
+            <div class="d-flex justify-content-center" style="width: 280px; height: 280px; position :relative; left : 6%; top : -180%; margin-top : -6%; font-family: 'Pretendard-Regular'; font-size : 10px;">
     <!--차트가 그려질 부분-->
                 <canvas class="d-flex justify-content-center" id="myChart{{forloop.counter}}"></canvas>
             </div>
@@ -240,7 +240,7 @@ console.log(maskWidth, maskHeight);
     h1{
         font-family: 'Pretendard-Regular';
         position : relative;
-        top : 2%;
+        top : 6%;
         left: -2%;
 
         font-size : 20px;
@@ -250,6 +250,7 @@ console.log(maskWidth, maskHeight);
 
     .lastword{
         font-weight : 400;
+        font-size : 18px;
         color:#151515;
     }
 
@@ -258,11 +259,11 @@ console.log(maskWidth, maskHeight);
 
     #clustertitle{
         font-family: 'Pretendard-Regular';
-        font-size : 30px;
+        font-size : 27px;
         font-weight : 600;
         color : #12bbad;
         position: relative;
-        top : 6%;
+        top : 5%;
         left : -3%;
 
 
@@ -270,8 +271,8 @@ console.log(maskWidth, maskHeight);
     .tiles{
         font-family: 'Pretendard-Regular';
         position :relative;
-        top : 18%;
-        left : 31%;
+        top : 16%;
+        left : 12%;
         font-weight : 600;
 
     }
