@@ -96,7 +96,7 @@ def dongDetail(request):
 
     data = request.POST['dong_info']
     dong_info = data.split("@")
-
+    dong_info_len = len(dong_info)
     # dong_info[0] : 구 이름
     # dong_info[1] : 동 이름
     # dong_info[2] : 동 코드
@@ -110,13 +110,17 @@ def dongDetail(request):
     graph_data = RML.minmax_scaling(df)
     graph_mean_data = graph_data.mean()
     graph_mean_data.index = graph_cate_list
-    print(graph_mean_data)
     graph_mean_dict = graph_mean_data.to_dict()
+
     gu_name = dong_info[0]
     dong_name = dong_info[1]
-    select_idx = int(dong_info[4])
-    graph_data = ast.literal_eval(dong_info[3])[select_idx]
 
+    if dong_info_len == 5:
+        select_idx = int(dong_info[4])
+        graph_data = ast.literal_eval(dong_info[3])[select_idx]
+        print(graph_data)
+    # else:
+        # df[df['gu']]
 
 
 
