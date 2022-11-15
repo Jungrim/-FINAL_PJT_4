@@ -100,22 +100,26 @@ def dongDetail(request):
     # dong_info[0] : 구 이름
     # dong_info[1] : 동 이름
     # dong_info[2] : 동 코드
+    
+    graph_cate_list = ['교통', '치안', '건강', '편의시설', '교육', '육아', 'MZ인구', '코리빙',\
+       '채식', '키즈카페', '공원', '스타벅스', '맥도날드',\
+       '조용한동네', '안심택배', '레저시설', '헬스장',\
+       '골프', '카쉐어링', '동물병원']
+    
     df = RML.preprocessing_df()
     graph_data = RML.minmax_scaling(df)
     graph_mean_data = graph_data.mean()
+    graph_mean_data.index = graph_cate_list
+    print(graph_mean_data)
     graph_mean_dict = graph_mean_data.to_dict()
     gu_name = dong_info[0]
     dong_name = dong_info[1]
     select_idx = int(dong_info[4])
     graph_data = ast.literal_eval(dong_info[3])[select_idx]
 
-    graph_cate_list = ['교통', '치안', '건강', '편의시설', '교육', '육아', 'MZ_POP_CNT', 'COLIVING_NUM',\
-       'VEGAN_CNT', 'KIDS_NUM', 'PARK_NUM', 'STARBUCKS_NUM', 'MC_NUM',\
-       'NOISE_VIBRATION_NUM', 'SAFE_DLVR_NUM', 'LEISURE_NUM', 'GYM_NUM',\
-       'GOLF_NUM', 'CAR_SHR_NUM', 'ANI_HSPT_NUM']
 
-    # argmax 써서 값, 카테고리 따로 리스트 뽑고,
-    # 리스트로 전달 해야 그래프 그리기 쉬움!
+
+
     graph_dict = dict(zip(graph_cate_list, graph_data))
     sorted_graph_data = sorted(graph_dict.items(), key=lambda x: x[1], reverse=True)
     key_list = []
